@@ -25,11 +25,11 @@ export const useTrending = (): ITrendingResponse => {
   const [data, setData] = useState<Data | null>(null);
   const [error, setError] = useState(null);
 
-  useSWR<Data>("/api/getTrending", fetcher, {
+  useSWR<Data>("/api/getTrending?language=fr-FR", fetcher, {
     onSuccess: setData,
     onError: (err) => setError(err.message),
   });
-
+  console.log("trending : ", data);
   return {
     loading: !error && !data,
     error,

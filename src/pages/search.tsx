@@ -41,10 +41,10 @@ const SearchPage: NextPage = () => {
   useEffect(() => {
     if (!debouncedSearch) return;
 
-    window.history.pushState("", "", `/search?q=${debouncedSearch}`);
+    window.history.pushState("", "", `/search?language=fr-FR&q=${debouncedSearch}`);
     setLoading(true);
 
-    fetch(`/api/search?query=${debouncedSearch}`)
+    fetch(`/api/search?language=fr-FR&query=${debouncedSearch}`)
       .then((res) => res.json())
       .then((res: IResponseType) => {
         setData(res);
@@ -123,6 +123,20 @@ const SearchPage: NextPage = () => {
           </div>
         </div>
 
+          {/* Iframe Google Maps centré */}
+          <div className="flex justify-center my-8">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2790.9426095237386!2d0.43742947691097894!3d45.61179727107676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47fe4d43a150ecdd%3A0xd7d2928a48818580!2sCinema%20Le%20Silverado!5e0!3m2!1sfr!2sfr!4v1757054017297!5m2!1sfr!2sfr"
+              width="600"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Cinema Le Silverado Map"
+            ></iframe>
+          </div>
+
         {!loading && getSortedValues.noResults && (
           <div className="text-center">Nothing found with that query.</div>
         )}
@@ -138,6 +152,7 @@ const SearchPage: NextPage = () => {
             </div>
           ))
         ) : (
+          
           <div className="space-y-24">
             {!!getSortedValues.movies.length && (
               <Item title="Movies" length={getSortedValues.movies.length}>
@@ -176,7 +191,7 @@ export const SearchInput: React.FC<{
   const { route, push } = useRouter();
 
   const props = {
-    placeholder: "Search for movies, series or actors...",
+    placeholder: "Recherche d'un film, d'une série ou d'un acteur",
     className: `w-full px-6 py-2 backdrop-blur-sm transition-colors rounded-md outline-none appearance-none placeholder-current  truncate
     ${
       route === "/search"

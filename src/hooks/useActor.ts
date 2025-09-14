@@ -9,7 +9,7 @@ export const useActor = (actorId: string) => {
   const [data, setData] = useState<ActorInfo>();
   const [error, setError] = useState(null);
 
-  useSWR<ActorInfo>(`/api/getActor?id=${actorId}`, fetcher, {
+  useSWR<ActorInfo>(`/api/getActor?id=${actorId}?language=fr-FR`, fetcher, {
     onSuccess: setData,
     onError: (err) => setError(err.message),
   });

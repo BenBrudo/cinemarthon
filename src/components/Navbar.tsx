@@ -10,15 +10,15 @@ import { Play } from "./Icons";
 const links = [
   {
     href: "/",
-    label: "Home",
+    label: "Programmation",
   },
   {
     href: "/about",
-    label: "About Us",
+    label: "Nos Bénévoles",
   },
   {
     href: "/search",
-    label: "Search",
+    label: "Le cinéma",
   },
 ];
 
@@ -37,7 +37,7 @@ export const Navbar: React.FC = () => {
               <Play className="w-6 h-6" />
             </div>
 
-            <span className="text-lg font-semibold">Movie App</span>
+            <span className="text-lg font-semibold">Le Silverado</span>
           </Link>
 
           <ul className="items-center hidden md:flex">
@@ -55,38 +55,6 @@ export const Navbar: React.FC = () => {
           </ul>
         </div>
 
-        <ul className="items-center hidden space-x-2 md:flex">
-          <li className="flex items-center space-x-4 ">
-            <span className="font-medium text-gray-700">Eggsy</span>
-
-            <div className="flex items-center space-x-2">
-              <Image
-                src="https://github.com/eggsy.png"
-                width={32}
-                height={32}
-                className="rounded-full"
-                alt="user avatar"
-              />
-
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4"
-                fill="#000000"
-                viewBox="0 0 256 256"
-              >
-                <rect width="256" height="256" fill="none"></rect>
-                <polyline
-                  points="208 96 128 176 48 96"
-                  fill="none"
-                  stroke="#000000"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="24"
-                ></polyline>
-              </svg>
-            </div>
-          </li>
-        </ul>
       </div>
     </nav>
   );

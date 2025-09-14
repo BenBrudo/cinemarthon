@@ -34,7 +34,7 @@ const MoviePage: NextPage = () => {
     return (
       <>
         <Head>
-          <title>{movie.title} - Movie App</title>
+          <title>{movie.title}</title>
         </Head>
 
         <div className="absolute inset-0 h-72 -z-10 bg-black/70">
@@ -91,14 +91,14 @@ const MoviePage: NextPage = () => {
           </div>
 
           <div className="space-y-40">
-            <PageItem title="Overview">
+            <PageItem title="Résumé">
               <div className="text-gray-600">
                 {movie.overview || "Wow... This is so empty."}
               </div>
             </PageItem>
 
             {movie.release_date && (
-              <PageItem title="Release Date">
+              <PageItem title="Date de sortie">
                 <div className="text-gray-600">
                   <div className="text-gray-600">
                     {getFormattedDate(movie.release_date)}
@@ -118,7 +118,7 @@ const MoviePage: NextPage = () => {
             </PageItem>
           </div>
 
-          <PageItem title="Cast">
+          <PageItem title="Casting">
             <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3">
               {movie.cast.map((cast, index) => (
                 <PersonCard
@@ -130,10 +130,10 @@ const MoviePage: NextPage = () => {
             </div>
           </PageItem>
 
-          <PageItem title="Reviews">
+          <PageItem title="Critiques">
             <div className="grid w-full gap-4">
               {!movie.comments.length ? (
-                <span className="opacity-50">No reviews, yet.</span>
+                <span className="opacity-50">Aucune pour le moment</span>
               ) : (
                 movie.comments.map((review) => (
                   <ReviewCard key={review.id} review={review} />

@@ -3,13 +3,13 @@ import { useState } from "react";
 import useSWR from "swr";
 
 // Fetcher
-const fetcher = <T>(url: string) => axios.get<T>(url).then((res) => res.data);
+const fetcher = <MovieInfo>(url: string) => axios.get<MovieInfo>(url).then((res) => res.data);
 
-export const useDiscovery = () => {
-  const [data, setData] = useState<DiscoveryResult[]>();
+export const useMovie = (id: string) => {
+  const [data, setData] = useState<MovieInfo>();
   const [error, setError] = useState(null);
 
-  useSWR<DiscoveryResult[]>(`/api/getDiscovery?language=fr-FR`, fetcher, {
+  useSWR<MovieInfo>(`/api/getMovie?id=${id}`, fetcher, {
     onSuccess: setData,
     onError: (err) => setError(err.message),
   });
@@ -22,4 +22,4 @@ export const useDiscovery = () => {
   };
 };
 
-export default useDiscovery;
+export default useMovie;
