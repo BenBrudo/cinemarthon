@@ -5,7 +5,8 @@ const nextConfig = {
   basePath: "/cinema",
   assetPrefix: "/cinema",
   images: {
-    domains: ["image.tmdb.org", "github.com", "secure.gravatar.com"],
+    unoptimized: true,
+    domains: ["grumly.ddns.net", "image.tmdb.org", "github.com", "secure.gravatar.com"],
   },
 };
 
