@@ -18,8 +18,8 @@ import Footer from "../components/Footer";
 
 // Meta
 const meta = {
-  title: "Movie App",
-  description: "Very good movie app.",
+  title: "Le Silverado",
+  description: "Very good Le Silverado.",
 };
 
 // NProgress settings and events

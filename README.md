@@ -1,4 +1,4 @@
-<h1 align="center">Movie App</h1>
+<h1 align="center">Le Silverado</h1>
 
 <p align="center">
   <img src="/demo.png" />

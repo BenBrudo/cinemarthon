@@ -15,71 +15,35 @@ import PersonCard from "../components/Card/Person";
 import LoaderCard from "../components/Card/Loader";
 import FeaturedCard from "../components/Card/Featured";
 import { SearchInput } from "./search";
+import useHomeMovie from "../hooks/useHomeMovie";
+import FeaturedMoviedCard from "../components/Card/FeaturedMovie";
 
 const Home: NextPage = () => {
   const { data, loading, error } = useHomeData();
+  const { movieData, movieLoading, movieError } = useHomeMovie('1364904', '1320414-the-witness', '1147205-ugolin', '1108782-le-sang-et-la-boue');
 
   return (
     <div className="relative px-6 space-y-10 md:px-0">
-      <section className="grid items-center gap-10 py-8 md:grid-cols-2 ">
-        <div className="space-y-8 text-center md:text-left">
-          <span className="px-4 py-2 text-white rounded-full bg-cyan-800">
-            Watch Anywhere
-          </span>
-
-          <h1 className="text-5xl font-black leading-tight text-cyan-800">
-            The Best{" "}
-            <span className="underline text-brand-blue">Movie App</span> of the
-            World
-          </h1>
-
-          <p className="text-xl text-gray-400 line-clamp-3">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
-            reprehenderit voluptatibus natus tenetur nisi ut praesentium minima
-            rem, voluptas, eaque dolorum officiis consectetur. Nesciunt
-            dignissimos, magnam eaque natus iure ab?
-          </p>
-
-          <div className="flex flex-col items-center justify-center gap-5 md:justify-start md:flex-row">
-            <button className="px-10 py-2 text-white transition-colors rounded-lg bg-cyan-800 hover:bg-cyan-800/90">
-              Join Now
-            </button>
-
-            <Link
-              href="/about"
-              className="hidden px-10 py-2 text-gray-700 transition-colors rounded-md md:block hover:bg-gray-100/70"
-            >
-              Learn More
-            </Link>
-          </div>
-        </div>
-
-        <div className="hidden md:block md:ml-auto">
-          <Image
-            src="/heading.svg"
-            width={500}
-            height={500}
-            alt="header image"
-          />
-        </div>
-      </section>
 
       <div className="space-y-24">
         <section className="space-y-6">
-          <Heading>Watch Next</Heading>
+          <Heading>Programmation de la semaine</Heading>
 
           {error && (
             <p className="opacity-50">
               Something went wrong! Please try again later.
             </p>
           )}
-          <div className="grid gap-6 md:grid-cols-3">
-            {loading || error ? (
-              <LoaderCard count={3} type="card-large" />
+          <div className="grid gap-6 md:grid-cols-4">
+            {movieLoading || movieError ? (
+              console.log(movieLoading),
+              <LoaderCard count={4} type="card-large" />
             ) : (
-              data?.discovery
-                ?.slice(0, 3)
-                .map((item) => <FeaturedCard key={item.id} movie={item} />)
+              console.log(movieData),
+              movieData?.map((item) => (
+                console.log(item),
+                <FeaturedMoviedCard key={item?.id} movie={item!} />
+              ))
             )}
           </div>
         </section>
@@ -91,10 +55,10 @@ const Home: NextPage = () => {
           }}
         >
           <div className="flex flex-col space-y-2">
-            <h2 className="text-xl font-semibold">Search</h2>
+            <h2 className="text-xl font-semibold">Recherche</h2>
 
             <p className="opacity-75">
-              Search for your favourite movie, show or actor!
+              Rechercher votre film préféré, réalisateur ou acteur.
             </p>
           </div>
 
@@ -105,8 +69,7 @@ const Home: NextPage = () => {
 
         <section className="space-y-6">
           <div className="flex items-center justify-between space-x-2">
-            <Heading>Trending Movies</Heading>
-            <LinkText>See more</LinkText>
+            <Heading>Films tendances</Heading>
           </div>
 
           {error && (
@@ -128,8 +91,7 @@ const Home: NextPage = () => {
 
         <section className="space-y-6">
           <div className="flex items-center justify-between space-x-2">
-            <Heading>Trending Series</Heading>
-            <LinkText>See more</LinkText>
+            <Heading>Séries à la mode</Heading>
           </div>
 
           {error && (
@@ -151,8 +113,7 @@ const Home: NextPage = () => {
 
         <section className="space-y-6">
           <div className="flex items-center justify-between space-x-2">
-            <Heading>Trending Actors</Heading>
-            <LinkText href="/actors">See more</LinkText>
+            <Heading>Acteurs à la cool</Heading>
           </div>
 
           {error && (

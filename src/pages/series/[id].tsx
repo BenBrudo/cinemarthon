@@ -39,7 +39,7 @@ const SeriesPage: NextPage = () => {
     return (
       <>
         <Head>
-          <title>{series.name} - Movie App</title>
+          <title>{series.name} - Le Silverado</title>
         </Head>
 
         <div className="absolute inset-0 shadow-lg h-72 -z-10 bg-black/70 backdrop-filter backdrop-blur-sm">
@@ -109,13 +109,13 @@ const SeriesPage: NextPage = () => {
           </div>
 
           <div className="space-y-40">
-            <PageItem title="Overview">
+            <PageItem title="Résumé">
               <div className="text-gray-600">
                 {series.overview || "Wow... This is so empty."}
               </div>
             </PageItem>
 
-            <PageItem title="First Released On">
+            <PageItem title="Première sortie le">
               <div className="text-gray-600">
                 {getFormattedDate(series.first_air_date)}
               </div>
@@ -130,7 +130,7 @@ const SeriesPage: NextPage = () => {
             </PageItem>
           </div>
 
-          <PageItem title="Cast">
+          <PageItem title="Casting">
             <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3">
               {series.cast.map((cast, index) => (
                 <PersonCard

@@ -7,7 +7,7 @@ export const Footer: React.FC = () => (
     <div className="mx-auto text-center py-14 md:w-3/12 md:px-0">
       <div className="flex flex-col space-y-8">
         <div className="space-y-4">
-          <Title>Movie App</Title>
+          <Title>Le Silverado</Title>
 
           <p className="opacity-50">
             All rights are not reserved. This is an open-source project, the

@@ -1,18 +1,18 @@
 import axios from "axios";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
+import { useRouter } from 'next/router';
 
 // Fetcher
-const fetcher = <T>(url: string) => axios.get<T>(url).then((res) => res.data);
+const fetcher = <MovieInfo>(url: string) => axios.get<MovieInfo>(url).then((res) => res.data);
 
-export const useDiscovery = () => {
-  const [data, setData] = useState<DiscoveryResult[]>();
+export const useMovie = (id: string) => {
+  const [data, setData] = useState<MovieInfo>();
   const [error, setError] = useState(null);
   const router = useRouter();
   const basePath = router.basePath;
 
-  useSWR<DiscoveryResult[]>(`${basePath}/api/getDiscovery?language=fr-FR`, fetcher, {
+  useSWR<MovieInfo>(`${basePath}/api/getMovie?id=${id}`, fetcher, {
     onSuccess: setData,
     onError: (err) => setError(err.message),
   });
@@ -25,4 +25,4 @@ export const useDiscovery = () => {
   };
 };
 
-export default useDiscovery;
+export default useMovie;

@@ -49,7 +49,7 @@ class TmdbHandler {
   async getInfo(movieId: string, type: "movie" | "tv" = "movie") {
     const { videos, credits, reviews, ...data } =
       await this.fetch<ExtendedMovieInfo>(
-        `/${type}/${movieId}?append_to_response=videos,credits,reviews`
+        `/${type}/${movieId}?append_to_response=videos,credits,reviews&language=fr-FR`
       );
 
     const latestTrailer = [...videos?.results]
@@ -94,15 +94,23 @@ class TmdbHandler {
     };
   }
 
+  async getMovie(movieId: string) {
+    return this.fetch<MovieInfo>(
+      `/movie/${movieId}?language=fr-FR`
+    ).then(
+      (res) => {console.log("return : ", res); return res}
+    );
+  }
+
   async getDiscovery() {
-    return this.fetch<{ results: DiscoveryResult[] }>(`/discover/movie`).then(
+    return this.fetch<{ results: DiscoveryResult[] }>(`/discover/movie?&language=fr-FR`).then(
       (res) => res.results
     );
   }
 
   async query(query: string) {
     const data = await this.fetch<{ results: Result[] }>(
-      `/search/multi?query=${query}`
+      `/search/multi?query=${query}&language=fr-FR`
     ).then((res) => res.results);
 
     const sortFunc = (a: Result, b: Result) => b.popularity - a.popularity;

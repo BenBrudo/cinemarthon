@@ -30,7 +30,7 @@ const ActorPage: NextPage = () => {
     return (
       <>
         <Head>
-          <title>{person.name} - Movie App</title>
+          <title>{person.name} - Le Silverado</title>
         </Head>
 
         <div className="absolute inset-0 h-72 -z-10 bg-black/70">

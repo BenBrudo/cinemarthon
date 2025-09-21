@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-export const FeaturedCard: React.FC<{ movie: DiscoveryResult }> = ({
+export const FeaturedMoviedCard: React.FC<{ movie: MovieInfo }> = ({
   movie,
 }) => {
+  console.log('**********movie************');
+  console.log(movie);
   const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
   const voteAverage = movie.vote_average;
@@ -37,14 +39,16 @@ export const FeaturedCard: React.FC<{ movie: DiscoveryResult }> = ({
                 <div className="text-lg font-medium leading-tight line-clamp-2">
                   {movie.title}
                 </div>
-
+                <div>
+                  {Math.floor(movie.runtime /60)}h {movie.runtime % 60}m
+                </div>
                 <p className="leading-tight opacity-75 line-clamp-2">
                   {movie.overview}
                 </p>
               </div>
 
-              <span className="px-2 py-1 space-x-1 text-sm rounded-lg bg-white/10 backdrop-blur-sm">
-                👍 {voteAverage}/10
+              <span className="px-2 font-medium  py-1 space-x-1 text-sm rounded-lg bg-white/10 backdrop-blur-sm">
+               {new Date(movie.release_date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
               </span>
             </div>
           </div>
@@ -54,4 +58,4 @@ export const FeaturedCard: React.FC<{ movie: DiscoveryResult }> = ({
   );
 };
 
-export default FeaturedCard;
+export default FeaturedMoviedCard;
