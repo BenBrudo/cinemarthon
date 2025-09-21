@@ -4,6 +4,7 @@ import useSWR from "swr";
 
 // Types
 import type { Person, Result } from "../types/tmdb-api";
+import { useRouter } from "next/router";
 
 // Fetcher
 const fetcher = <T>(url: string) => axios.get<T>(url).then((res) => res.data);
@@ -24,8 +25,9 @@ interface Data {
 export const useTrending = (): ITrendingResponse => {
   const [data, setData] = useState<Data | null>(null);
   const [error, setError] = useState(null);
-
-  useSWR<Data>("/api/getTrending?language=fr-FR", fetcher, {
+  const router = useRouter();
+  const basePath = router.basePath;
+  useSWR<Data>(`${basePath}/api/getTrending?language=fr-FR`, fetcher, {
     onSuccess: setData,
     onError: (err) => setError(err.message),
   });

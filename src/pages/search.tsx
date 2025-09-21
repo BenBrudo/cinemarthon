@@ -31,7 +31,8 @@ const SearchPage: NextPage = () => {
 
   const [data, setData] = useState<IResponseType>();
   const [loading, setLoading] = useState(false);
-
+  const router = useRouter();
+  const basePath = router.basePath;
   // There has to be a better way for this, right?
   if (alreadyDid === false && query.q) {
     setValue(query.q as string);
@@ -44,7 +45,7 @@ const SearchPage: NextPage = () => {
     window.history.pushState("", "", `/search?language=fr-FR&q=${debouncedSearch}`);
     setLoading(true);
 
-    fetch(`/api/search?language=fr-FR&query=${debouncedSearch}`)
+    fetch(`${basePath}/api/search?language=fr-FR&query=${debouncedSearch}`)
       .then((res) => res.json())
       .then((res: IResponseType) => {
         setData(res);

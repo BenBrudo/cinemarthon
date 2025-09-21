@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
 
@@ -8,8 +9,10 @@ const fetcher = <T>(url: string) => axios.get<T>(url).then((res) => res.data);
 export const useActor = (actorId: string) => {
   const [data, setData] = useState<ActorInfo>();
   const [error, setError] = useState(null);
+  const router = useRouter();
+  const basePath = router.basePath;
 
-  useSWR<ActorInfo>(`/api/getActor?id=${actorId}?language=fr-FR`, fetcher, {
+  useSWR<ActorInfo>(`${basePath}/api/getActor?id=${actorId}?language=fr-FR`, fetcher, {
     onSuccess: setData,
     onError: (err) => setError(err.message),
   });
