@@ -20,7 +20,7 @@ import FeaturedMoviedCard from "../components/Card/FeaturedMovie";
 
 const Home: NextPage = () => {
   const { data, loading, error } = useHomeData();
-  const { movieData, movieLoading, movieError } = useHomeMovie('1007734-nobody-2', '1035259-the-naked-gun', '988359-dis-moi-pourquoi-ces-choses-sont-si-belles', '1124566-affeksjonsverdi');
+  const { movieData, movieLoading, movieError } = useHomeMovie('1364904', '1320414-the-witness', '1147205-ugolin', '1108782-le-sang-et-la-boue');
 
   return (
     <div className="relative px-6 space-y-10 md:px-0">
