@@ -47,8 +47,9 @@ const Home: NextPage = () => {
         return date;
       });
 
-      const minDate = new Date(Math.min(...weekDates.map(d => d.getTime())));
-      const maxDate = new Date(Math.max(...weekDates.map(d => d.getTime())));
+      const weekTimestamps = weekDates.map(d => d.getTime());
+      const minDate = new Date(Math.min(...weekTimestamps));
+      const maxDate = new Date(Math.max(...weekTimestamps));
 
       // Si aujourd'hui est entre la première et la dernière date de projection de la semaine
       if (today >= minDate && today <= maxDate) {
