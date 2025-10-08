@@ -31,7 +31,6 @@ export const useTrending = (): ITrendingResponse => {
     onSuccess: setData,
     onError: (err) => setError(err.message),
   });
-  console.log("trending : ", data);
   return {
     loading: !error && !data,
     error,

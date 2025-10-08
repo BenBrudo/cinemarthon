@@ -1,14 +1,12 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { MovieWithScreening } from "../../types/movie-with-screening";
 
-export const FeaturedMoviedCard: React.FC<{ movie: MovieInfo }> = ({
+export const FeaturedMoviedCard: React.FC<{ movie: MovieWithScreening }> = ({
   movie,
 }) => {
-  console.log('**********movie************');
-  console.log(movie);
   const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
-  const voteAverage = movie.vote_average;
 
   return (
     <Link href={`/movies/${movie.id}?language=fr-FR`} passHref>
@@ -42,14 +40,18 @@ export const FeaturedMoviedCard: React.FC<{ movie: MovieInfo }> = ({
                 <div>
                   {Math.floor(movie.runtime /60)}h {movie.runtime % 60}m
                 </div>
-                <p className="leading-tight opacity-75 line-clamp-2">
-                  {movie.overview}
-                </p>
               </div>
 
-              <span className="px-2 font-medium  py-1 space-x-1 text-sm rounded-lg bg-white/10 backdrop-blur-sm">
-               {new Date(movie.release_date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
-              </span>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-2 font-medium py-1 space-x-1 text-sm rounded-lg bg-white/10 backdrop-blur-sm">
+                  {new Date(movie.screening_date).toLocaleDateString('fr-FR', { month: 'long', day: 'numeric' })}
+                </span>
+                {movie.hours && (
+                  <span className="px-2 font-medium py-1 space-x-1 text-sm rounded-lg bg-blue-500/20 backdrop-blur-sm">
+                    🕐 {movie.hours}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>

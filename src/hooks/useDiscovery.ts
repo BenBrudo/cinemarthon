@@ -16,8 +16,6 @@ export const useDiscovery = () => {
     onSuccess: setData,
     onError: (err) => setError(err.message),
   });
-  console.log(error);
-  console.log(data);
   return {
     loading: !error && !data,
     error,

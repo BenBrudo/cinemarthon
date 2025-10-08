@@ -1,53 +1,162 @@
-import Image from "next/image";
-import Link from "next/link";
-
 // Types
 import type { NextPage } from "next";
+import type { MoviesData } from "../types/movies-config";
+
+// React
+import { useState } from "react";
+
+// Data
+import weeklyMoviesData from "../data/weekly-movies.json";
+import familyMoviesData from "../data/family-movies.json";
 
 // Hooks
 import useHomeData from "../hooks/useHomeData";
 
 // Components
 import Heading from "../components/Heading";
-import LinkText from "../components/LinkText";
 import MovieCard from "../components/Card/Movie";
 import PersonCard from "../components/Card/Person";
 import LoaderCard from "../components/Card/Loader";
-import FeaturedCard from "../components/Card/Featured";
 import { SearchInput } from "./search";
 import useHomeMovie from "../hooks/useHomeMovie";
+import useHomeMovieFamille from "../hooks/useHomeMovieFamille";
+
 import FeaturedMoviedCard from "../components/Card/FeaturedMovie";
 
 const Home: NextPage = () => {
   const { data, loading, error } = useHomeData();
-  const { movieData, movieLoading, movieError } = useHomeMovie('1364904', '1320414-the-witness', '1147205-ugolin', '1108782-le-sang-et-la-boue');
+  const [weekIndex, setWeekIndex] = useState(0);
+  
+  // Films de la semaine
+  const allWeeklyMovies = (weeklyMoviesData as MoviesData).movies;
+  const moviesPerWeek = 5;
+  const maxWeeks = Math.ceil(allWeeklyMovies.length / moviesPerWeek);
+  
+  const moviesData = allWeeklyMovies.slice(
+    weekIndex * moviesPerWeek,
+    (weekIndex + 1) * moviesPerWeek
+  );
+  const moviesDataFamille = (familyMoviesData as MoviesData).movies;
+  
+  const handleNextWeek = () => {
+    if (weekIndex < maxWeeks - 1) {
+      setWeekIndex(weekIndex + 1);
+    }
+  };
+  
+  const handlePreviousWeek = () => {
+    if (weekIndex > 0) {
+      setWeekIndex(weekIndex - 1);
+    }
+  };
 
+  // Fonction pour obtenir l'intervalle de dates de la semaine courante
+  const getWeekDateRange = () => {
+    const currentWeekMovies = moviesData;
+    if (currentWeekMovies.length === 0) return "";
+    
+    const dates = currentWeekMovies.map(movie => new Date(movie.screening_date));
+    const minDate = new Date(Math.min(...dates.map(d => d.getTime())));
+    const maxDate = new Date(Math.max(...dates.map(d => d.getTime())));
+    
+    const formatDate = (date: Date) => 
+      date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+    
+    if (minDate.getTime() === maxDate.getTime()) {
+      return formatDate(minDate);
+    }
+    
+    return `${formatDate(minDate)} - ${formatDate(maxDate)}`;
+  };
+  const { movieData, movieLoading, movieError } = useHomeMovie(
+    moviesData[0]?.id,
+    moviesData[1]?.id,
+    moviesData[2]?.id,
+    moviesData[3]?.id,
+    moviesData[4]?.id
+  );
+  const { movieDataFamille, movieLoadingFamille, movieErrorFamille } = useHomeMovieFamille(
+    moviesDataFamille[0]?.id,
+    moviesDataFamille[1]?.id,
+    moviesDataFamille[2]?.id,
+    moviesDataFamille[3]?.id
+  );
+  // Ajouter les dates de diffusion aux données des films
+  const moviesWithScreenings = movieData?.map((movie, index) => ({
+    ...movie,
+    screening_date: moviesData[index]?.screening_date,
+    hours: moviesData[index]?.hours
+  }));
+  const moviesWithScreeningsFamille = movieDataFamille?.map((movie, index) => ({
+    ...movie,
+    screening_date: moviesDataFamille[index]?.screening_date,
+    hours: moviesDataFamille[index]?.hours
+  }));
   return (
     <div className="relative px-6 space-y-10 md:px-0">
 
       <div className="space-y-24">
         <section className="space-y-6">
-          <Heading>Programmation de la semaine</Heading>
+          <div className="flex items-center justify-between">
+            <Heading>Programmation de la semaine ({getWeekDateRange()})</Heading>
+            <div className="flex gap-2">
+              <button
+                onClick={handlePreviousWeek}
+                disabled={weekIndex === 0}
+                className={`px-4 py-2 rounded-md transition-colors ${
+                  weekIndex === 0
+                    ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
+                    : 'text-white bg-blue-600 hover:bg-blue-700'
+                }`}
+              >
+                Semaine précédente
+              </button>
+              <button
+                onClick={handleNextWeek}
+                disabled={weekIndex >= maxWeeks - 1}
+                className={`px-4 py-2 rounded-md transition-colors ${
+                  weekIndex >= maxWeeks - 1
+                    ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
+                    : 'text-white bg-blue-600 hover:bg-blue-700'
+                }`}
+              >
+                Semaine suivante
+              </button>
+            </div>
+          </div>
 
           {error && (
             <p className="opacity-50">
               Something went wrong! Please try again later.
             </p>
           )}
-          <div className="grid gap-6 md:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-5">
             {movieLoading || movieError ? (
-              console.log(movieLoading),
-              <LoaderCard count={4} type="card-large" />
+              <LoaderCard count={5} type="card-large" />
             ) : (
-              console.log(movieData),
-              movieData?.map((item) => (
-                console.log(item),
-                <FeaturedMoviedCard key={item?.id} movie={item!} />
+              moviesWithScreenings?.map((item) => (
+                <FeaturedMoviedCard key={item?.id} movie={item} />
               ))
             )}
           </div>
         </section>
-
+        <section className="space-y-6">
+          <Heading>Programmation Famille</Heading>
+          {error && (
+            <p className="opacity-50">
+              Something went wrong! Please try again later.
+            </p>
+          )}
+          <div className="grid gap-6 md:grid-cols-4">
+            {movieLoadingFamille || movieErrorFamille ? (
+              <LoaderCard count={4} type="card-large" />
+            ) : (
+              moviesWithScreeningsFamille?.map((item) => (
+                <FeaturedMoviedCard key={item?.id} movie={item} />
+              ))
+            )}
+          </div>
+        </section>
         <section
           className="flex flex-col items-start gap-6 p-16 text-white bg-center bg-cover rounded-md bg-brand-blue md:flex-row md:justify-between md:items-center"
           style={{
@@ -67,71 +176,6 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section className="space-y-6">
-          <div className="flex items-center justify-between space-x-2">
-            <Heading>Films tendances</Heading>
-          </div>
-
-          {error && (
-            <p className="opacity-50">
-              Something went wrong! Please try again later.
-            </p>
-          )}
-
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
-            {loading || error ? (
-              <LoaderCard count={6} />
-            ) : (
-              data?.trending?.movie.map((item) => (
-                <MovieCard key={item.id} movie={item} />
-              ))
-            )}
-          </div>
-        </section>
-
-        <section className="space-y-6">
-          <div className="flex items-center justify-between space-x-2">
-            <Heading>Séries à la mode</Heading>
-          </div>
-
-          {error && (
-            <p className="opacity-50">
-              Something went wrong! Please try again later.
-            </p>
-          )}
-
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
-            {loading || error ? (
-              <LoaderCard count={6} />
-            ) : (
-              data?.trending?.tv.map((item) => (
-                <MovieCard key={item.id} type="tv" movie={item} />
-              ))
-            )}
-          </div>
-        </section>
-
-        <section className="space-y-6">
-          <div className="flex items-center justify-between space-x-2">
-            <Heading>Acteurs à la cool</Heading>
-          </div>
-
-          {error && (
-            <p className="opacity-50">
-              Something went wrong! Please try again later.
-            </p>
-          )}
-
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
-            {loading || error ? (
-              <LoaderCard count={6} />
-            ) : (
-              data?.trending?.person.map((item) => (
-                <PersonCard key={item.id} person={item} />
-              ))
-            )}
-          </div>
-        </section>
       </div>
     </div>
   );
