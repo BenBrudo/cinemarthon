@@ -1,7 +1,7 @@
 // Hooks
 import useMovie from "./useMovie";
 
-export const useHomeMovie = (idOne: string, idTwo: string, idThree: string, idFour: string) => {
+export const useHomeMovie = (idOne: string = '', idTwo: string = '', idThree: string = '', idFour: string = '', idFive: string = '') => {
   const {
     data: movieOne,
     loading: movieOneLoading,
@@ -26,10 +26,16 @@ export const useHomeMovie = (idOne: string, idTwo: string, idThree: string, idFo
     error: movieFourError,
   } = useMovie(idFour);
 
+  const {
+    data: movieFive,
+    loading: movieFiveLoading,
+    error: movieFiveError,
+  } = useMovie(idFive);
+
   return {
-    movieLoading: movieOneLoading || movieTwoLoading || movieThreeLoading || movieFourLoading,
-    movieError: movieOneError || movieTwoError || movieThreeError || movieFourError,
-    movieData: [movieOne, movieTwo, movieThree, movieFour],
+    movieLoading: movieOneLoading || movieTwoLoading || movieThreeLoading || movieFourLoading || movieFiveLoading,
+    movieError: movieOneError || movieTwoError || movieThreeError || movieFourError || movieFiveError,
+    movieData: [movieOne, movieTwo, movieThree, movieFour, movieFive],
   };
 };
 

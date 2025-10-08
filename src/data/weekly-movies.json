@@ -1,0 +1,104 @@
+{
+  "movies": [
+    {
+      "id": "1108412-veilleurs-de-nuit",
+      "screening_date": "2025-09-19",
+      "hours": "21:00"
+    },
+    {
+      "id": "1267905-the-roses",
+      "screening_date": "2025-09-20",
+      "hours": "18:00"
+    },
+    {
+      "id": "1356670-heldin",
+      "screening_date": "2025-09-20",
+      "hours": "21:00"
+    },
+    {
+      "id": "1364904",
+      "screening_date": "2025-09-21",
+      "hours": "18:00"
+    },
+    {
+      "id": "1320414-the-witness",
+      "screening_date": "2025-09-23",
+      "hours": "21:00"
+    },
+    {
+      "id": "1108782-le-sang-et-la-boue",
+      "screening_date": "2025-09-26",
+      "hours": "20:30"
+    },
+    {
+      "id": "1178602-miroirs-no-3",
+      "screening_date": "2025-09-27",
+      "hours": "18:00"
+    },
+    {
+      "id": "1115780",
+      "screening_date": "2025-09-27",
+      "hours": "21:00"
+    },
+    {
+      "id": "1195108",
+      "screening_date": "2025-09-28",
+      "hours": "18:00"
+    },
+    {
+      "id": "1313032-ciudad-sin-sueno",
+      "screening_date": "2025-09-30",
+      "hours": "21:00"
+    },
+    {
+      "id": "1151272-sirat",
+      "screening_date": "2025-10-03",
+      "hours": "21:00"
+    },
+    {
+      "id": "1289936-downton-abbey-the-grand-finale",
+      "screening_date": "2025-10-04",
+      "hours": "18:00"
+    },
+    {
+      "id": "979976-connemara",
+      "screening_date": "2025-10-04",
+      "hours": "21:00"
+    },
+    {
+      "id": "1421157",
+      "screening_date": "2025-10-05",
+      "hours": "18:00"
+    },
+    {
+      "id": "1313229-nino",
+      "screening_date": "2025-10-07",
+      "hours": "21:00"
+    },
+    {
+      "id": "999075",
+      "screening_date": "2025-10-08",
+      "hours": "21:00"
+    },
+    {
+      "id": "1172091-wilding",
+      "screening_date": "2025-10-11",
+      "hours": "18:00"
+    },
+    {
+      "id": "1315702-dalloway",
+      "screening_date": "2025-10-11",
+      "hours": "21:00"
+    },
+    {
+      "id": "1392527",
+      "screening_date": "2025-10-12",
+      "hours": "18:00"
+    },
+    {
+      "id": "1293858-l-interet-d-adam",
+      "screening_date": "2025-10-14",
+      "hours": "21:00"
+    }
+  ]
+}

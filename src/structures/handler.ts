@@ -26,7 +26,7 @@ interface ExtendedActorInfo extends ActorInfo {
 
 class TmdbHandler {
   apiKey = process.env.TMDB_API_KEY;
-
+  idMovies = process.env.MOVIES_ID;
   async fetch<T>(url: string) {
     const urlConstruct = new URL("http://api.themoviedb.org/3" + url);
     urlConstruct.searchParams.append("api_key", this.apiKey);
@@ -98,7 +98,7 @@ class TmdbHandler {
     return this.fetch<MovieInfo>(
       `/movie/${movieId}?language=fr-FR`
     ).then(
-      (res) => {console.log("return : ", res); return res}
+      (res) => res
     );
   }
 

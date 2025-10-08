@@ -24,7 +24,7 @@ const SearchPage: NextPage = () => {
 
   const [alreadyDid, setDid] = useState(false);
 
-  const [searchValue, setValue] = useState("");
+  const [searchValue, setValue] = useState<string>("");
   const [debouncedSearch] = useDebounce(searchValue, 500);
 
   const [sortValue, setSort] = useState("Popularity");
