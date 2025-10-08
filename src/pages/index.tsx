@@ -14,8 +14,6 @@ import useHomeData from "../hooks/useHomeData";
 
 // Components
 import Heading from "../components/Heading";
-import MovieCard from "../components/Card/Movie";
-import PersonCard from "../components/Card/Person";
 import LoaderCard from "../components/Card/Loader";
 import { SearchInput } from "./search";
 import useHomeMovie from "../hooks/useHomeMovie";
@@ -25,25 +23,62 @@ import FeaturedMoviedCard from "../components/Card/FeaturedMovie";
 
 const Home: NextPage = () => {
   const { data, loading, error } = useHomeData();
-  const [weekIndex, setWeekIndex] = useState(0);
-  
+
   // Films de la semaine
   const allWeeklyMovies = (weeklyMoviesData as MoviesData).movies;
   const moviesPerWeek = 5;
   const maxWeeks = Math.ceil(allWeeklyMovies.length / moviesPerWeek);
-  
+
+  // Fonction pour trouver la semaine courante basée sur la date actuelle
+  const getCurrentWeekIndex = () => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normaliser à minuit pour la comparaison
+
+    for (let weekIdx = 0; weekIdx < maxWeeks; weekIdx++) {
+      const weekMovies = allWeeklyMovies.slice(
+        weekIdx * moviesPerWeek,
+        (weekIdx + 1) * moviesPerWeek
+      );
+
+      // Vérifier si la date actuelle est dans cette semaine
+      const weekDates = weekMovies.map(movie => {
+        const date = new Date(movie.screening_date);
+        date.setHours(0, 0, 0, 0);
+        return date;
+      });
+
+      const minDate = new Date(Math.min(...weekDates.map(d => d.getTime())));
+      const maxDate = new Date(Math.max(...weekDates.map(d => d.getTime())));
+
+      // Si aujourd'hui est entre la première et la dernière date de projection de la semaine
+      if (today >= minDate && today <= maxDate) {
+        return weekIdx;
+      }
+
+      // Si aujourd'hui est avant la première date, on considère que c'est la semaine courante
+      if (today < minDate) {
+        return weekIdx;
+      }
+    }
+
+    // Si on est après toutes les dates, retourner la dernière semaine
+    return maxWeeks - 1;
+  };
+
+  const [weekIndex, setWeekIndex] = useState(getCurrentWeekIndex);
+
   const moviesData = allWeeklyMovies.slice(
     weekIndex * moviesPerWeek,
     (weekIndex + 1) * moviesPerWeek
   );
   const moviesDataFamille = (familyMoviesData as MoviesData).movies;
-  
+
   const handleNextWeek = () => {
     if (weekIndex < maxWeeks - 1) {
       setWeekIndex(weekIndex + 1);
     }
   };
-  
+
   const handlePreviousWeek = () => {
     if (weekIndex > 0) {
       setWeekIndex(weekIndex - 1);
@@ -54,18 +89,18 @@ const Home: NextPage = () => {
   const getWeekDateRange = () => {
     const currentWeekMovies = moviesData;
     if (currentWeekMovies.length === 0) return "";
-    
+
     const dates = currentWeekMovies.map(movie => new Date(movie.screening_date));
     const minDate = new Date(Math.min(...dates.map(d => d.getTime())));
     const maxDate = new Date(Math.max(...dates.map(d => d.getTime())));
-    
-    const formatDate = (date: Date) => 
+
+    const formatDate = (date: Date) =>
       date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
-    
+
     if (minDate.getTime() === maxDate.getTime()) {
       return formatDate(minDate);
     }
-    
+
     return `${formatDate(minDate)} - ${formatDate(maxDate)}`;
   };
   const { movieData, movieLoading, movieError } = useHomeMovie(
@@ -103,22 +138,20 @@ const Home: NextPage = () => {
               <button
                 onClick={handlePreviousWeek}
                 disabled={weekIndex === 0}
-                className={`px-4 py-2 rounded-md transition-colors ${
-                  weekIndex === 0
+                className={`px-4 py-2 rounded-md transition-colors ${weekIndex === 0
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
-                }`}
+                  }`}
               >
                 Semaine précédente
               </button>
               <button
                 onClick={handleNextWeek}
                 disabled={weekIndex >= maxWeeks - 1}
-                className={`px-4 py-2 rounded-md transition-colors ${
-                  weekIndex >= maxWeeks - 1
+                className={`px-4 py-2 rounded-md transition-colors ${weekIndex >= maxWeeks - 1
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
-                }`}
+                  }`}
               >
                 Semaine suivante
               </button>
