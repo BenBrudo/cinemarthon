@@ -131,7 +131,7 @@ const Home: NextPage = () => {
             </p>
           )}
           <div className="grid gap-6 md:grid-cols-5">
-            {movieLoadingFamille || movieErrorFamille ? (
+            {movieLoading || movieError ? (
               <LoaderCard count={5} type="card-large" />
             ) : (
               moviesWithScreenings?.map((item) => (
@@ -148,7 +148,7 @@ const Home: NextPage = () => {
             </p>
           )}
           <div className="grid gap-6 md:grid-cols-4">
-            {movieLoading || movieError ? (
+            {movieLoadingFamille || movieErrorFamille ? (
               <LoaderCard count={4} type="card-large" />
             ) : (
               moviesWithScreeningsFamille?.map((item) => (
