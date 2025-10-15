@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import type { MoviesData } from "../types/movies-config";
 
 // React
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 // Data
 import weeklyMoviesData from "../data/weekly-movies.json";
@@ -29,8 +29,8 @@ const Home: NextPage = () => {
   const moviesPerWeek = 5;
   const maxWeeks = Math.ceil(allWeeklyMovies.length / moviesPerWeek);
 
-  // Fonction pour trouver la semaine courante basée sur la date actuelle
-  const getCurrentWeekIndex = () => {
+  // Calcul de l'index de la semaine courante avec useMemo pour éviter les recalculs
+  const currentWeekIndex = useMemo(() => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Normaliser à minuit pour la comparaison
 
@@ -64,9 +64,9 @@ const Home: NextPage = () => {
 
     // Si on est après toutes les dates, retourner la dernière semaine
     return maxWeeks - 1;
-  };
+  }, [allWeeklyMovies, maxWeeks, moviesPerWeek]);
 
-  const [weekIndex, setWeekIndex] = useState(getCurrentWeekIndex);
+  const [weekIndex, setWeekIndex] = useState(currentWeekIndex);
 
   const moviesData = allWeeklyMovies.slice(
     weekIndex * moviesPerWeek,
