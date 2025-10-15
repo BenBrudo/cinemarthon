@@ -96,7 +96,7 @@ const Home: NextPage = () => {
     const maxDate = new Date(Math.max(...dates.map(d => d.getTime())));
 
     const formatDate = (date: Date) =>
-      date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+      date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'short' });
 
     if (minDate.getTime() === maxDate.getTime()) {
       return formatDate(minDate);
@@ -175,7 +175,8 @@ const Home: NextPage = () => {
           </div>
         </section>
         <section className="space-y-6">
-          <Heading>Programmation Famille</Heading>
+          <Heading>Programmation Mercredi et Ciné Famille </Heading>
+          Mercredi (séance à 4€) et Ciné Famille (séance le dimanche à 3€)
           {error && (
             <p className="opacity-50">
               Something went wrong! Please try again later.
