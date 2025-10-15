@@ -44,7 +44,7 @@ export const FeaturedMoviedCard: React.FC<{ movie: MovieWithScreening }> = ({
 
               <div className="flex flex-wrap gap-2">
                 <span className="px-2 font-medium py-1 space-x-1 text-sm rounded-lg bg-white/10 backdrop-blur-sm">
-                  {new Date(movie.screening_date).toLocaleDateString('fr-FR', { month: 'long', day: 'numeric' })}
+                  {new Date(movie.screening_date).toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' })}
                 </span>
                 {movie.hours && (
                   <span className="px-2 font-medium py-1 space-x-1 text-sm rounded-lg bg-blue-500/20 backdrop-blur-sm">
