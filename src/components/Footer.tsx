@@ -14,7 +14,7 @@ export const Footer: React.FC = () => (
             <p>NORMAL : 5,5€ / REDUIT (demandeurs d’emploi, étudiants, -16 ans) : 4,5€</p>
             <p>CINE MERCREDI ET CINEFAMILLE : 3€</p>
             <p>Carte 5 entrées : 22,5€ soit 4,5€ la place </p> 
-            <p>Carte 10 entrées 45€ + 1 entrée gratuite soit 4,1€ la place.</p>
+            <p>Carte 10 entrées : 45€ + 1 entrée gratuite soit 4,1€ la place.</p>
             <p>All content and images belong to{" "}</p>
             <a
               href="https://www.themoviedb.org/"
