@@ -23,7 +23,7 @@ const Home: NextPage = () => {
   const { data, loading, error } = useHomeData();
 
   // Tous les films chronologiquement
-  const allMovies = (weeklyMoviesData as MoviesData).movies;
+  const allMovies = useMemo(() => (weeklyMoviesData as MoviesData).movies, []);
   const moviesPerPage = 5;
 
   // Calcul de l'index du film du jour (ou du prochain) avec useMemo
