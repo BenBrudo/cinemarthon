@@ -76,7 +76,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div id="mobile-menu" className="md:hidden bg-white border-t border-gray-200" role="menu">
+        <div id="mobile-menu" className="md:hidden bg-white border-t border-gray-200">
           <ul className="container mx-auto">
             {links.map((link) => (
               <li key={link.label}>
@@ -86,7 +86,6 @@ export const Navbar: React.FC = () => {
                     route === link.href && "bg-gray-200"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  role="menuitem"
                 >
                   {link.label}
                 </Link>
