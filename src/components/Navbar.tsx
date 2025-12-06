@@ -63,6 +63,8 @@ export const Navbar: React.FC = () => {
           className="md:hidden p-2 text-brand-dark-blue"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
         >
           {isMobileMenuOpen ? (
             <Close className="w-6 h-6" />
@@ -74,19 +76,21 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
+        <div id="mobile-menu" className="md:hidden bg-white border-t border-gray-200" role="menu">
           <ul className="container mx-auto">
             {links.map((link) => (
-              <Link href={link.href} key={link.label}>
-                <li
-                  className={`p-4 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200 ${
+              <li key={link.label}>
+                <Link
+                  href={link.href}
+                  className={`block p-4 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200 ${
                     route === link.href && "bg-gray-200"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
+                  role="menuitem"
                 >
                   {link.label}
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
