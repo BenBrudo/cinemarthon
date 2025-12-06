@@ -102,11 +102,11 @@ const Home: NextPage = () => {
         <section className="space-y-6">
           <div className="flex items-center justify-between mb-8">
             <Heading>Prochaines séances ({getDateRange()})</Heading>
-            <div className="hidden gap-2 md:flex">
+            <div className="flex gap-2">
               <button
                 onClick={handlePrevious}
                 disabled={startIndex === 0}
-                className={`px-4 py-2 rounded-md transition-colors ${startIndex === 0
+                className={`px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base rounded-md transition-colors ${startIndex === 0
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
                   }`}
@@ -116,7 +116,7 @@ const Home: NextPage = () => {
               <button
                 onClick={handleNext}
                 disabled={startIndex + moviesPerPage >= allMovies.length}
-                className={`px-4 py-2 rounded-md transition-colors ${startIndex + moviesPerPage >= allMovies.length
+                className={`px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base rounded-md transition-colors ${startIndex + moviesPerPage >= allMovies.length
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
                   }`}
