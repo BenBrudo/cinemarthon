@@ -96,9 +96,9 @@ const Home: NextPage = () => {
   return (
     <div className="relative px-6 md:px-0">
 
-      <div className="space-y-12">
+      <div className="space-y-8">
         <section className="space-y-6">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mb-8">
             <Heading>Prochaines séances ({getDateRange()})</Heading>
             <div className="hidden gap-2 md:flex">
               <button

@@ -50,10 +50,10 @@ function MovieApp({ Component, pageProps }: AppProps) {
         <meta name="twitter:description" content={meta.description} />
       </Head>
 
-      <div className="min-h-screen bg-white/90 backdrop-blur-md">
+      <div className="min-h-screen bg-white/90 backdrop-blur-md flex flex-col">
         <Navbar />
 
-        <div className="container min-h-screen py-10 mx-auto">
+        <div className="container py-10 mx-auto flex-grow">
           <Component {...pageProps} />
         </div>
 
