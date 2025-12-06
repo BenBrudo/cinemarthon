@@ -27,8 +27,14 @@ export const Navbar: React.FC = () => {
   const { route } = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape" && isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+  };
+
   return (
-    <nav className="space-x-6 bg-white shadow-sm">
+    <nav className="space-x-6 bg-white shadow-sm" onKeyDown={handleKeyDown}>
       <div className="container flex items-center justify-between mx-auto space-x-6">
         <div className="flex items-center md:space-x-14">
           <Link
