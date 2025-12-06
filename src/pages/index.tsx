@@ -15,6 +15,7 @@ import useHomeData from "../hooks/useHomeData";
 import Heading from "../components/Heading";
 import LoaderCard from "../components/Card/Loader";
 import useHomeMovie from "../hooks/useHomeMovie";
+import { Download } from "../components/Icons";
 
 import FeaturedMoviedCard from "../components/Card/FeaturedMovie";
 
@@ -121,6 +122,22 @@ const Home: NextPage = () => {
               >
                 Suivant
               </button>
+              <a
+                href="/cinema/programme-decembre-2025.pdf"
+                download="Programme-Decembre-2025.pdf"
+                className="p-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
+                title="Télécharger le programme de décembre 2025"
+              >
+                <Download className="w-6 h-6" />
+              </a>
+              <a
+                href="/cinema/programme-janvier-2026.pdf"
+                download="Programme-Janvier-2026.pdf"
+                className="p-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
+                title="Télécharger le programme de janvier 2026"
+              >
+                <Download className="w-6 h-6" />
+              </a>
             </div>
           </div>
 
