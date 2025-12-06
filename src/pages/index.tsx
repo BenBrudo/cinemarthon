@@ -169,7 +169,7 @@ const Home: NextPage = () => {
               Something went wrong! Please try again later.
             </p>
           )}
-          <div className="flex gap-6 overflow-x-auto md:grid md:grid-cols-5 snap-x snap-mandatory">
+          <div className="flex gap-6 overflow-x-auto md:overflow-hidden md:grid md:grid-cols-5 snap-x snap-mandatory">
             {movieLoading || movieError ? (
               <LoaderCard count={5} type="card-large" />
             ) : (
