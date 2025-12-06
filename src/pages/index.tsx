@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import type { MoviesData } from "../types/movies-config";
 
 // React
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 // Data
 import weeklyMoviesData from "../data/weekly-movies.json";
@@ -16,8 +16,13 @@ import Heading from "../components/Heading";
 import LoaderCard from "../components/Card/Loader";
 import useHomeMovie from "../hooks/useHomeMovie";
 import { Download } from "../components/Icons";
+import { motion } from "framer-motion";
 
 import FeaturedMoviedCard from "../components/Card/FeaturedMovie";
+
+// Constants
+const MD_BREAKPOINT = 768; // Tailwind md breakpoint
+const SWIPE_THRESHOLD = 50; // Minimum pixels to trigger navigation
 
 const Home: NextPage = () => {
   const { error } = useHomeData();
@@ -47,6 +52,28 @@ const Home: NextPage = () => {
 
   const [startIndex, setStartIndex] = useState(currentMovieIndex);
   const [showProgramMenu, setShowProgramMenu] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile viewport on client side to avoid SSR hydration issues
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < MD_BREAKPOINT);
+    
+    // Initial check
+    checkMobile();
+    
+    // Debounced resize handler
+    let timeoutId: NodeJS.Timeout;
+    const debouncedCheck = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkMobile, 150);
+    };
+    
+    window.addEventListener('resize', debouncedCheck);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', debouncedCheck);
+    };
+  }, []);
 
   // Obtenir les 5 films à afficher à partir de startIndex
   const moviesData = allMovies.slice(startIndex, startIndex + moviesPerPage);
@@ -102,11 +129,11 @@ const Home: NextPage = () => {
         <section className="space-y-6">
           <div className="flex items-center justify-between mb-8">
             <Heading>Prochaines séances ({getDateRange()})</Heading>
-            <div className="hidden gap-2 md:flex">
+            <div className="flex gap-2">
               <button
                 onClick={handlePrevious}
                 disabled={startIndex === 0}
-                className={`px-4 py-2 rounded-md transition-colors ${startIndex === 0
+                className={`hidden md:block px-4 py-2 rounded-md transition-colors ${startIndex === 0
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
                   }`}
@@ -116,7 +143,7 @@ const Home: NextPage = () => {
               <button
                 onClick={handleNext}
                 disabled={startIndex + moviesPerPage >= allMovies.length}
-                className={`px-4 py-2 rounded-md transition-colors ${startIndex + moviesPerPage >= allMovies.length
+                className={`hidden md:block px-4 py-2 rounded-md transition-colors ${startIndex + moviesPerPage >= allMovies.length
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
                   }`}
@@ -169,7 +196,23 @@ const Home: NextPage = () => {
               Something went wrong! Please try again later.
             </p>
           )}
-          <div className="flex gap-6 overflow-x-auto md:overflow-hidden md:grid md:grid-cols-5 snap-x snap-mandatory">
+          <motion.div 
+            className="flex gap-6 overflow-hidden md:grid md:grid-cols-5"
+            drag={isMobile ? "x" : false}
+            dragElastic={0.2}
+            onDragEnd={(event, info) => {
+              // Only handle swipe on mobile
+              if (!isMobile) return;
+              
+              if (info.offset.x > SWIPE_THRESHOLD) {
+                // Swipe right - go to previous
+                handlePrevious();
+              } else if (info.offset.x < -SWIPE_THRESHOLD) {
+                // Swipe left - go to next
+                handleNext();
+              }
+            }}
+          >
             {movieLoading || movieError ? (
               <LoaderCard count={5} type="card-large" />
             ) : (
@@ -179,7 +222,7 @@ const Home: NextPage = () => {
                 </div>
               ))
             )}
-          </div>
+          </motion.div>
         </section>
 
       </div>
