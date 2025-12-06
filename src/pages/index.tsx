@@ -7,7 +7,6 @@ import { useState, useMemo } from "react";
 
 // Data
 import weeklyMoviesData from "../data/weekly-movies.json";
-import familyMoviesData from "../data/family-movies.json";
 
 // Hooks
 import useHomeData from "../hooks/useHomeData";
@@ -17,81 +16,57 @@ import Heading from "../components/Heading";
 import LoaderCard from "../components/Card/Loader";
 import { SearchInput } from "./search";
 import useHomeMovie from "../hooks/useHomeMovie";
-import useHomeMovieFamille from "../hooks/useHomeMovieFamille";
 
 import FeaturedMoviedCard from "../components/Card/FeaturedMovie";
 
 const Home: NextPage = () => {
   const { data, loading, error } = useHomeData();
 
-  // Films de la semaine
-  const allWeeklyMovies = (weeklyMoviesData as MoviesData).movies;
-  const moviesPerWeek = 5;
-  const maxWeeks = Math.ceil(allWeeklyMovies.length / moviesPerWeek);
+  // Tous les films chronologiquement
+  const allMovies = useMemo(() => (weeklyMoviesData as MoviesData).movies, []);
+  const moviesPerPage = 5;
 
-  // Calcul de l'index de la semaine courante avec useMemo pour éviter les recalculs
-  const currentWeekIndex = useMemo(() => {
+  // Calcul de l'index du film du jour (ou du prochain) avec useMemo
+  const currentMovieIndex = useMemo(() => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Normaliser à minuit pour la comparaison
 
-    for (let weekIdx = 0; weekIdx < maxWeeks; weekIdx++) {
-      const weekMovies = allWeeklyMovies.slice(
-        weekIdx * moviesPerWeek,
-        (weekIdx + 1) * moviesPerWeek
-      );
-
-      // Vérifier si la date actuelle est dans cette semaine
-      const weekDates = weekMovies.map(movie => {
-        const date = new Date(movie.screening_date);
-        date.setHours(0, 0, 0, 0);
-        return date;
-      });
-
-      const weekTimestamps = weekDates.map(d => d.getTime());
-      const minDate = new Date(Math.min(...weekTimestamps));
-      const maxDate = new Date(Math.max(...weekTimestamps));
-
-      // Si aujourd'hui est entre la première et la dernière date de projection de la semaine
-      if (today >= minDate && today <= maxDate) {
-        return weekIdx;
-      }
-
-      // Si aujourd'hui est avant la première date, on considère que c'est la semaine courante
-      if (today < minDate) {
-        return weekIdx;
+    // Trouver le premier film dont la date est aujourd'hui ou dans le futur
+    for (let i = 0; i < allMovies.length; i++) {
+      const movieDate = new Date(allMovies[i].screening_date);
+      movieDate.setHours(0, 0, 0, 0);
+      
+      if (movieDate >= today) {
+        return i;
       }
     }
 
-    // Si on est après toutes les dates, retourner la dernière semaine
-    return maxWeeks - 1;
-  }, [allWeeklyMovies, maxWeeks, moviesPerWeek]);
+    // Si tous les films sont passés, retourner le dernier index valide
+    return Math.max(0, allMovies.length - moviesPerPage);
+  }, [allMovies]);
 
-  const [weekIndex, setWeekIndex] = useState(currentWeekIndex);
+  const [startIndex, setStartIndex] = useState(currentMovieIndex);
 
-  const moviesData = allWeeklyMovies.slice(
-    weekIndex * moviesPerWeek,
-    (weekIndex + 1) * moviesPerWeek
-  );
-  const moviesDataFamille = (familyMoviesData as MoviesData).movies;
+  // Obtenir les 5 films à afficher à partir de startIndex
+  const moviesData = allMovies.slice(startIndex, startIndex + moviesPerPage);
 
-  const handleNextWeek = () => {
-    if (weekIndex < maxWeeks - 1) {
-      setWeekIndex(weekIndex + 1);
+  const handleNext = () => {
+    if (startIndex + moviesPerPage < allMovies.length) {
+      setStartIndex(startIndex + moviesPerPage);
     }
   };
 
-  const handlePreviousWeek = () => {
-    if (weekIndex > 0) {
-      setWeekIndex(weekIndex - 1);
+  const handlePrevious = () => {
+    if (startIndex > 0) {
+      setStartIndex(Math.max(0, startIndex - moviesPerPage));
     }
   };
 
-  // Fonction pour obtenir l'intervalle de dates de la semaine courante
-  const getWeekDateRange = () => {
-    const currentWeekMovies = moviesData;
-    if (currentWeekMovies.length === 0) return "";
+  // Fonction pour obtenir l'intervalle de dates des films affichés
+  const getDateRange = () => {
+    if (moviesData.length === 0) return "";
 
-    const dates = currentWeekMovies.map(movie => new Date(movie.screening_date));
+    const dates = moviesData.map(movie => new Date(movie.screening_date));
     const minDate = new Date(Math.min(...dates.map(d => d.getTime())));
     const maxDate = new Date(Math.max(...dates.map(d => d.getTime())));
 
@@ -104,6 +79,7 @@ const Home: NextPage = () => {
 
     return `${formatDate(minDate)} - ${formatDate(maxDate)}`;
   };
+
   const { movieData, movieLoading, movieError } = useHomeMovie(
     moviesData[0]?.id,
     moviesData[1]?.id,
@@ -111,22 +87,12 @@ const Home: NextPage = () => {
     moviesData[3]?.id,
     moviesData[4]?.id
   );
-  const { movieDataFamille, movieLoadingFamille, movieErrorFamille } = useHomeMovieFamille(
-    moviesDataFamille[0]?.id,
-    moviesDataFamille[1]?.id,
-    moviesDataFamille[2]?.id,
-    moviesDataFamille[3]?.id
-  );
+
   // Ajouter les dates de diffusion aux données des films
   const moviesWithScreenings = movieData?.map((movie, index) => ({
     ...movie,
     screening_date: moviesData[index]?.screening_date,
     hours: moviesData[index]?.hours
-  }));
-  const moviesWithScreeningsFamille = movieDataFamille?.map((movie, index) => ({
-    ...movie,
-    screening_date: moviesDataFamille[index]?.screening_date,
-    hours: moviesDataFamille[index]?.hours
   }));
   return (
     <div className="relative px-6 space-y-10 md:px-0">
@@ -134,27 +100,27 @@ const Home: NextPage = () => {
       <div className="space-y-24">
         <section className="space-y-6">
           <div className="flex items-center justify-between">
-            <Heading>Programmation de la semaine ({getWeekDateRange()})</Heading>
+            <Heading>Prochaines séances ({getDateRange()})</Heading>
             <div className="flex gap-2">
               <button
-                onClick={handlePreviousWeek}
-                disabled={weekIndex === 0}
-                className={`px-4 py-2 rounded-md transition-colors ${weekIndex === 0
+                onClick={handlePrevious}
+                disabled={startIndex === 0}
+                className={`px-4 py-2 rounded-md transition-colors ${startIndex === 0
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
                   }`}
               >
-                Semaine précédente
+                Précédent
               </button>
               <button
-                onClick={handleNextWeek}
-                disabled={weekIndex >= maxWeeks - 1}
-                className={`px-4 py-2 rounded-md transition-colors ${weekIndex >= maxWeeks - 1
+                onClick={handleNext}
+                disabled={startIndex + moviesPerPage >= allMovies.length}
+                className={`px-4 py-2 rounded-md transition-colors ${startIndex + moviesPerPage >= allMovies.length
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
                   }`}
               >
-                Semaine suivante
+                Suivant
               </button>
             </div>
           </div>
@@ -169,24 +135,6 @@ const Home: NextPage = () => {
               <LoaderCard count={5} type="card-large" />
             ) : (
               moviesWithScreenings?.map((item) => (
-                <FeaturedMoviedCard key={item?.id} movie={item} />
-              ))
-            )}
-          </div>
-        </section>
-        <section className="space-y-6">
-          <Heading>Programmation Mercredi et Ciné Famille </Heading>
-          Mercredi (séance à 4€) et Ciné Famille (séance le dimanche à 3€)
-          {error && (
-            <p className="opacity-50">
-              Something went wrong! Please try again later.
-            </p>
-          )}
-          <div className="grid gap-6 md:grid-cols-4">
-            {movieLoadingFamille || movieErrorFamille ? (
-              <LoaderCard count={4} type="card-large" />
-            ) : (
-              moviesWithScreeningsFamille?.map((item) => (
                 <FeaturedMoviedCard key={item?.id} movie={item} />
               ))
             )}
