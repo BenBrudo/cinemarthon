@@ -1,5 +1,6 @@
 // Types
 import type { NextPage } from "next";
+import Image from "next/image";
 
 const SearchPage: NextPage = () => {
 
@@ -35,18 +36,23 @@ const SearchPage: NextPage = () => {
           </div>
         </div>
 
-        {/* Iframe Google Maps centré */}
+        {/* Image carte avec lien vers Google Maps */}
         <div className="flex justify-center my-8">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2790.9426095237386!2d0.43742947691097894!3d45.61179727107676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47fe4d43a150ecdd%3A0xd7d2928a48818580!2sCinema%20Le%20Silverado!5e0!3m2!1sfr!2sfr!4v1757054017297!5m2!1sfr!2sfr"
-            width="600"
-            height="450"
-            style={{ border: 0 }}
-            allowFullScreen={true}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Cinema Le Silverado Map"
-          ></iframe>
+          <a
+            href="https://maps.app.goo.gl/pwg3nZeo8JGxQqsU8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+          >
+            <Image
+              src="/cinema/cinema-map.png"
+              alt="Carte de localisation du Cinéma Le Silverado - Cliquez pour ouvrir Google Maps"
+              width={600}
+              height={450}
+              className="hover:opacity-90 transition-opacity duration-300"
+              unoptimized
+            />
+          </a>
         </div>
       </div>
     </>
