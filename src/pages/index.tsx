@@ -31,8 +31,26 @@ const Home: NextPage = () => {
   const allMovies = useMemo(() => (weeklyMoviesData as MoviesData).movies, []);
   const moviesPerPage = 5;
 
-  // Toujours commencer à l'index 0 pour permettre la navigation vers toutes les dates
-  const [startIndex, setStartIndex] = useState(0);
+  // Calcul de l'index du film du jour (ou du prochain) avec useMemo
+  const currentMovieIndex = useMemo(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normaliser à minuit pour la comparaison
+
+    // Trouver le premier film dont la date est aujourd'hui ou dans le futur
+    for (let i = 0; i < allMovies.length; i++) {
+      const movieDate = new Date(allMovies[i].screening_date);
+      movieDate.setHours(0, 0, 0, 0);
+      
+      if (movieDate >= today) {
+        return i;
+      }
+    }
+
+    // Si tous les films sont passés, retourner le dernier index valide
+    return Math.max(0, allMovies.length - moviesPerPage);
+  }, [allMovies]);
+
+  const [startIndex, setStartIndex] = useState(currentMovieIndex);
   const [showProgramMenu, setShowProgramMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
