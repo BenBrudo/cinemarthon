@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 
 // Icons
-import { Play, Menu, Close } from "./Icons";
+import { Play, Menu, Close, Download } from "./Icons";
 
 const links = [
   {
@@ -97,6 +97,29 @@ export const Navbar: React.FC = () => {
                 </Link>
               </li>
             ))}
+            {/* Download Links */}
+            <li className="border-t border-gray-200">
+              <a
+                href="/cinema/programme-famille.pdf"
+                download="Programme-Famille.pdf"
+                className="flex items-center gap-2 p-4 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Download className="w-5 h-5" />
+                Programme Famille
+              </a>
+            </li>
+            <li>
+              <a
+                href="/cinema/programme-classique.pdf"
+                download="Programme-Classique.pdf"
+                className="flex items-center gap-2 p-4 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Download className="w-5 h-5" />
+                Programme Classique
+              </a>
+            </li>
           </ul>
         </div>
       )}
