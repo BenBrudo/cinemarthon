@@ -14,7 +14,6 @@ import useHomeData from "../hooks/useHomeData";
 // Components
 import Heading from "../components/Heading";
 import LoaderCard from "../components/Card/Loader";
-import { SearchInput } from "./search";
 import useHomeMovie from "../hooks/useHomeMovie";
 
 import FeaturedMoviedCard from "../components/Card/FeaturedMovie";
@@ -95,9 +94,9 @@ const Home: NextPage = () => {
     hours: moviesData[index]?.hours
   }));
   return (
-    <div className="relative px-6 space-y-10 md:px-0">
+    <div className="relative px-6 md:px-0">
 
-      <div className="space-y-24">
+      <div className="space-y-12">
         <section className="space-y-6">
           <div className="flex items-center justify-between">
             <Heading>Prochaines séances ({getDateRange()})</Heading>
@@ -140,24 +139,6 @@ const Home: NextPage = () => {
                 </div>
               ))
             )}
-          </div>
-        </section>
-        <section
-          className="flex flex-col items-start gap-6 p-16 text-white bg-center bg-cover rounded-md bg-brand-blue md:flex-row md:justify-between md:items-center"
-          style={{
-            backgroundImage: `url('/search-container-background.svg')`,
-          }}
-        >
-          <div className="flex flex-col space-y-2">
-            <h2 className="text-xl font-semibold">Recherche</h2>
-
-            <p className="opacity-75">
-              Rechercher votre film préféré, réalisateur ou acteur.
-            </p>
-          </div>
-
-          <div className="w-full text-gray-100/40 md:w-3/6">
-            <SearchInput />
           </div>
         </section>
 
