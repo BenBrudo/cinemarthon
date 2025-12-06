@@ -39,13 +39,13 @@ const SearchPage: NextPage = () => {
         {/* Image carte avec lien vers Google Maps */}
         <div className="flex justify-center my-8">
           <a
-            href="https://www.google.com/maps/place/Cinema+Le+Silverado/@45.611797,0.437429,15z"
+            href="https://maps.app.goo.gl/pwg3nZeo8JGxQqsU8"
             target="_blank"
             rel="noopener noreferrer"
             className="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
           >
             <Image
-              src="/cinema/cinema-map.svg"
+              src="/cinema/cinema-map.png"
               alt="Carte de localisation du Cinéma Le Silverado - Cliquez pour ouvrir Google Maps"
               width={600}
               height={450}
