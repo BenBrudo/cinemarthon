@@ -46,6 +46,7 @@ const Home: NextPage = () => {
   }, [allMovies]);
 
   const [startIndex, setStartIndex] = useState(currentMovieIndex);
+  const [showProgramMenu, setShowProgramMenu] = useState(false);
 
   // Obtenir les 5 films à afficher à partir de startIndex
   const moviesData = allMovies.slice(startIndex, startIndex + moviesPerPage);
@@ -122,22 +123,44 @@ const Home: NextPage = () => {
               >
                 Suivant
               </button>
-              <a
-                href="/cinema/programme-decembre-2025.pdf"
-                download="Programme-Décembre-2025.pdf"
-                className="p-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
-                title="Télécharger le programme de décembre 2025"
-              >
-                <Download className="w-6 h-6" />
-              </a>
-              <a
-                href="/cinema/programme-janvier-2026.pdf"
-                download="Programme-Janvier-2026.pdf"
-                className="p-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
-                title="Télécharger le programme de janvier 2026"
-              >
-                <Download className="w-6 h-6" />
-              </a>
+              <div className="relative">
+                <button
+                  onClick={() => setShowProgramMenu(!showProgramMenu)}
+                  className="p-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
+                  title="Télécharger un programme"
+                  aria-label="Télécharger un programme"
+                  aria-expanded={showProgramMenu}
+                  aria-haspopup="true"
+                >
+                  <Download className="w-6 h-6" />
+                </button>
+                {showProgramMenu && (
+                  <div 
+                    className="absolute right-0 z-10 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200"
+                    role="menu"
+                    aria-label="Sélection du programme"
+                  >
+                    <a
+                      href="/cinema/programme-famille.pdf"
+                      download="Programme-Famille.pdf"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-md"
+                      onClick={() => setShowProgramMenu(false)}
+                      role="menuitem"
+                    >
+                      Programme Famille
+                    </a>
+                    <a
+                      href="/cinema/programme-classique.pdf"
+                      download="Programme-Classique.pdf"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-md"
+                      onClick={() => setShowProgramMenu(false)}
+                      role="menuitem"
+                    >
+                      Programme Classique
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
