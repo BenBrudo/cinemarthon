@@ -20,6 +20,10 @@ import { motion } from "framer-motion";
 
 import FeaturedMoviedCard from "../components/Card/FeaturedMovie";
 
+// Constants
+const MD_BREAKPOINT = 768; // Tailwind md breakpoint
+const SWIPE_THRESHOLD = 50; // Minimum pixels to trigger navigation
+
 const Home: NextPage = () => {
   const { error } = useHomeData();
 
@@ -52,10 +56,23 @@ const Home: NextPage = () => {
 
   // Detect mobile viewport on client side to avoid SSR hydration issues
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    const checkMobile = () => setIsMobile(window.innerWidth < MD_BREAKPOINT);
+    
+    // Initial check
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    
+    // Debounced resize handler
+    let timeoutId: NodeJS.Timeout;
+    const debouncedCheck = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkMobile, 150);
+    };
+    
+    window.addEventListener('resize', debouncedCheck);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', debouncedCheck);
+    };
   }, []);
 
   // Obtenir les 5 films à afficher à partir de startIndex
@@ -187,11 +204,10 @@ const Home: NextPage = () => {
               // Only handle swipe on mobile
               if (!isMobile) return;
               
-              const swipeThreshold = 50;
-              if (info.offset.x > swipeThreshold) {
+              if (info.offset.x > SWIPE_THRESHOLD) {
                 // Swipe right - go to previous
                 handlePrevious();
-              } else if (info.offset.x < -swipeThreshold) {
+              } else if (info.offset.x < -SWIPE_THRESHOLD) {
                 // Swipe left - go to next
                 handleNext();
               }
