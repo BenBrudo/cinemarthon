@@ -124,7 +124,7 @@ const Home: NextPage = () => {
               </button>
               <a
                 href="/cinema/programme-decembre-2025.pdf"
-                download="Programme-Decembre-2025.pdf"
+                download="Programme-Décembre-2025.pdf"
                 className="p-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
                 title="Télécharger le programme de décembre 2025"
               >
