@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import type { MoviesData } from "../types/movies-config";
 
 // React
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 // Data
 import weeklyMoviesData from "../data/weekly-movies.json";
@@ -48,6 +48,15 @@ const Home: NextPage = () => {
 
   const [startIndex, setStartIndex] = useState(currentMovieIndex);
   const [showProgramMenu, setShowProgramMenu] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile viewport on client side to avoid SSR hydration issues
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Obtenir les 5 films à afficher à partir de startIndex
   const moviesData = allMovies.slice(startIndex, startIndex + moviesPerPage);
@@ -172,12 +181,11 @@ const Home: NextPage = () => {
           )}
           <motion.div 
             className="flex gap-6 overflow-hidden md:grid md:grid-cols-5"
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
+            drag={isMobile ? "x" : false}
             dragElastic={0.2}
             onDragEnd={(event, info) => {
-              // Only handle swipe on mobile (non-desktop)
-              if (window.innerWidth >= 768) return;
+              // Only handle swipe on mobile
+              if (!isMobile) return;
               
               const swipeThreshold = 50;
               if (info.offset.x > swipeThreshold) {
