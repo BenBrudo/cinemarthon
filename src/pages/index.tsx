@@ -20,7 +20,7 @@ import useHomeMovie from "../hooks/useHomeMovie";
 import FeaturedMoviedCard from "../components/Card/FeaturedMovie";
 
 const Home: NextPage = () => {
-  const { data, loading, error } = useHomeData();
+  const { error } = useHomeData();
 
   // Tous les films chronologiquement
   const allMovies = useMemo(() => (weeklyMoviesData as MoviesData).movies, []);
@@ -101,7 +101,7 @@ const Home: NextPage = () => {
         <section className="space-y-6">
           <div className="flex items-center justify-between">
             <Heading>Prochaines séances ({getDateRange()})</Heading>
-            <div className="flex gap-2">
+            <div className="hidden gap-2 md:flex">
               <button
                 onClick={handlePrevious}
                 disabled={startIndex === 0}
@@ -130,12 +130,14 @@ const Home: NextPage = () => {
               Something went wrong! Please try again later.
             </p>
           )}
-          <div className="grid gap-6 md:grid-cols-5">
+          <div className="flex gap-6 overflow-x-auto md:grid md:grid-cols-5 snap-x snap-mandatory">
             {movieLoading || movieError ? (
               <LoaderCard count={5} type="card-large" />
             ) : (
               moviesWithScreenings?.map((item) => (
-                <FeaturedMoviedCard key={item?.id} movie={item} />
+                <div key={item?.id} className="flex-shrink-0 w-full snap-start md:w-auto">
+                  <FeaturedMoviedCard movie={item} />
+                </div>
               ))
             )}
           </div>
