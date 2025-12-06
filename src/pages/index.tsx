@@ -16,6 +16,7 @@ import Heading from "../components/Heading";
 import LoaderCard from "../components/Card/Loader";
 import useHomeMovie from "../hooks/useHomeMovie";
 import { Download } from "../components/Icons";
+import { motion } from "framer-motion";
 
 import FeaturedMoviedCard from "../components/Card/FeaturedMovie";
 
@@ -106,7 +107,7 @@ const Home: NextPage = () => {
               <button
                 onClick={handlePrevious}
                 disabled={startIndex === 0}
-                className={`px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base rounded-md transition-colors ${startIndex === 0
+                className={`hidden md:block px-4 py-2 rounded-md transition-colors ${startIndex === 0
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
                   }`}
@@ -116,7 +117,7 @@ const Home: NextPage = () => {
               <button
                 onClick={handleNext}
                 disabled={startIndex + moviesPerPage >= allMovies.length}
-                className={`px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base rounded-md transition-colors ${startIndex + moviesPerPage >= allMovies.length
+                className={`hidden md:block px-4 py-2 rounded-md transition-colors ${startIndex + moviesPerPage >= allMovies.length
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
                   }`}
@@ -169,7 +170,25 @@ const Home: NextPage = () => {
               Something went wrong! Please try again later.
             </p>
           )}
-          <div className="flex gap-6 overflow-x-auto md:overflow-hidden md:grid md:grid-cols-5 snap-x snap-mandatory">
+          <motion.div 
+            className="flex gap-6 overflow-hidden md:grid md:grid-cols-5"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={(event, info) => {
+              // Only handle swipe on mobile (non-desktop)
+              if (window.innerWidth >= 768) return;
+              
+              const swipeThreshold = 50;
+              if (info.offset.x > swipeThreshold) {
+                // Swipe right - go to previous
+                handlePrevious();
+              } else if (info.offset.x < -swipeThreshold) {
+                // Swipe left - go to next
+                handleNext();
+              }
+            }}
+          >
             {movieLoading || movieError ? (
               <LoaderCard count={5} type="card-large" />
             ) : (
@@ -179,7 +198,7 @@ const Home: NextPage = () => {
                 </div>
               ))
             )}
-          </div>
+          </motion.div>
         </section>
 
       </div>
