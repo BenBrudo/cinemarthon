@@ -41,19 +41,28 @@ const Home: NextPage = () => {
       }
     }
 
-    // Si tous les films sont passés, retourner le dernier index valide
-    return Math.max(0, allMovies.length - moviesPerPage);
+    // Si tous les films sont passés, retourner le premier index pour permettre la navigation
+    return 0;
   }, [allMovies]);
 
   const [startIndex, setStartIndex] = useState(currentMovieIndex);
   const [showProgramMenu, setShowProgramMenu] = useState(false);
 
+  // Calculer l'index maximum pour garantir toujours moviesPerPage films
+  const maxStartIndex = useMemo(() => 
+    Math.max(0, allMovies.length - moviesPerPage),
+    [allMovies, moviesPerPage]
+  );
+
   // Obtenir les 5 films à afficher à partir de startIndex
   const moviesData = allMovies.slice(startIndex, startIndex + moviesPerPage);
 
   const handleNext = () => {
-    if (startIndex + moviesPerPage < allMovies.length) {
-      setStartIndex(startIndex + moviesPerPage);
+    // Calculer le prochain index sans dépasser maxStartIndex
+    const nextIndex = Math.min(startIndex + moviesPerPage, maxStartIndex);
+    
+    if (nextIndex > startIndex) {
+      setStartIndex(nextIndex);
     }
   };
 
@@ -82,11 +91,11 @@ const Home: NextPage = () => {
   };
 
   const { movieData, movieLoading, movieError } = useHomeMovie(
-    moviesData[0]?.id,
-    moviesData[1]?.id,
-    moviesData[2]?.id,
-    moviesData[3]?.id,
-    moviesData[4]?.id
+    moviesData[0]?.id || '',
+    moviesData[1]?.id || '',
+    moviesData[2]?.id || '',
+    moviesData[3]?.id || '',
+    moviesData[4]?.id || ''
   );
 
   // Ajouter les dates de diffusion aux données des films
@@ -115,8 +124,8 @@ const Home: NextPage = () => {
               </button>
               <button
                 onClick={handleNext}
-                disabled={startIndex + moviesPerPage >= allMovies.length}
-                className={`px-4 py-2 rounded-md transition-colors ${startIndex + moviesPerPage >= allMovies.length
+                disabled={startIndex >= maxStartIndex}
+                className={`px-4 py-2 rounded-md transition-colors ${startIndex >= maxStartIndex
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
                   }`}
