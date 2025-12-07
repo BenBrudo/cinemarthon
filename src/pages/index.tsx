@@ -41,8 +41,8 @@ const Home: NextPage = () => {
       }
     }
 
-    // Si tous les films sont passés, retourner le dernier index valide
-    return Math.max(0, allMovies.length - moviesPerPage);
+    // Si tous les films sont passés, retourner le premier index pour permettre la navigation
+    return 0;
   }, [allMovies]);
 
   const [startIndex, setStartIndex] = useState(currentMovieIndex);
