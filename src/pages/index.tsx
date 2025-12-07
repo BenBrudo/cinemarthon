@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import type { MoviesData } from "../types/movies-config";
 
 // React
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 
 // Data
 import weeklyMoviesData from "../data/weekly-movies.json";
@@ -47,6 +47,12 @@ const Home: NextPage = () => {
 
   const [startIndex, setStartIndex] = useState(currentMovieIndex);
   const [showProgramMenu, setShowProgramMenu] = useState(false);
+  
+  // Refs for swipe detection
+  const movieListRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+  const scrollStartX = useRef<number>(0);
 
   // Obtenir les 5 films à afficher à partir de startIndex
   const moviesData = allMovies.slice(startIndex, startIndex + moviesPerPage);
@@ -61,6 +67,60 @@ const Home: NextPage = () => {
     if (startIndex > 0) {
       setStartIndex(Math.max(0, startIndex - moviesPerPage));
     }
+  };
+
+  // Touch event handlers for swipe detection
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = e.touches[0].clientX;
+    if (movieListRef.current) {
+      scrollStartX.current = movieListRef.current.scrollLeft;
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!movieListRef.current) return;
+
+    const container = movieListRef.current;
+    const swipeThreshold = 50; // Minimum swipe distance in pixels
+    const swipeDistance = touchStartX.current - touchEndX.current;
+
+    // Check if user scrolled to the edge
+    const scrollLeft = container.scrollLeft;
+    const scrollWidth = container.scrollWidth;
+    const clientWidth = container.clientWidth;
+    const atStart = scrollLeft === 0;
+    const atEnd = Math.abs(scrollWidth - clientWidth - scrollLeft) < 1;
+
+    // Swipe left (move finger left = swipe left) at the end of the list
+    if (swipeDistance > swipeThreshold && atEnd && startIndex + moviesPerPage < allMovies.length) {
+      handleNext();
+      // Scroll to the start of the new page (first item)
+      setTimeout(() => {
+        if (movieListRef.current) {
+          movieListRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+    // Swipe right (move finger right = swipe right) at the beginning of the list
+    else if (swipeDistance < -swipeThreshold && atStart && startIndex > 0) {
+      handlePrevious();
+      // Scroll to the end of the new page (last item)
+      setTimeout(() => {
+        if (movieListRef.current) {
+          const scrollWidth = movieListRef.current.scrollWidth;
+          const clientWidth = movieListRef.current.clientWidth;
+          movieListRef.current.scrollTo({ left: scrollWidth - clientWidth, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+
+    // Reset touch positions
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   // Fonction pour obtenir l'intervalle de dates des films affichés
@@ -165,7 +225,13 @@ const Home: NextPage = () => {
               Something went wrong! Please try again later.
             </p>
           )}
-          <div className="flex gap-6 overflow-x-auto md:overflow-hidden md:grid md:grid-cols-5 snap-x snap-mandatory">
+          <div 
+            ref={movieListRef}
+            className="flex gap-6 overflow-x-auto md:overflow-hidden md:grid md:grid-cols-5 snap-x snap-mandatory"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {movieLoading || movieError ? (
               <LoaderCard count={5} type="card-large" />
             ) : (
