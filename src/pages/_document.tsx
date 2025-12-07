@@ -21,7 +21,7 @@ class MovieAppDocument extends Document {
 
           {/* PWA Manifest */}
           <link rel="manifest" href="/cinema/manifest.json" />
-          <link rel="apple-touch-icon" href="/cinema/icon-192x192.svg" />
+          <link rel="apple-touch-icon" href="/cinema/icon-192x192.png" />
 
           {/* PWA Meta Tags */}
           <meta name="application-name" content="Le Silverado" />
