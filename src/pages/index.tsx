@@ -52,8 +52,10 @@ const Home: NextPage = () => {
   const moviesData = allMovies.slice(startIndex, startIndex + moviesPerPage);
 
   const handleNext = () => {
-    if (startIndex + moviesPerPage < allMovies.length) {
-      setStartIndex(startIndex + moviesPerPage);
+    const maxStartIndex = Math.max(0, allMovies.length - moviesPerPage);
+    const nextIndex = Math.min(startIndex + moviesPerPage, maxStartIndex);
+    if (nextIndex > startIndex) {
+      setStartIndex(nextIndex);
     }
   };
 
@@ -115,8 +117,8 @@ const Home: NextPage = () => {
               </button>
               <button
                 onClick={handleNext}
-                disabled={startIndex + moviesPerPage >= allMovies.length}
-                className={`px-4 py-2 rounded-md transition-colors ${startIndex + moviesPerPage >= allMovies.length
+                disabled={startIndex >= Math.max(0, allMovies.length - moviesPerPage)}
+                className={`px-4 py-2 rounded-md transition-colors ${startIndex >= Math.max(0, allMovies.length - moviesPerPage)
                     ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
                     : 'text-white bg-blue-600 hover:bg-blue-700'
                   }`}
