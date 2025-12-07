@@ -54,6 +54,11 @@ const Home: NextPage = () => {
   const touchEndX = useRef<number>(0);
   const scrollStartX = useRef<number>(0);
 
+  // Constants for swipe navigation
+  const SWIPE_THRESHOLD = 50; // Minimum swipe distance in pixels
+  const SCROLL_DELAY = 100; // Delay before scrolling after navigation
+  const SCROLL_TOLERANCE = 1; // Tolerance for edge detection
+
   // Obtenir les 5 films à afficher à partir de startIndex
   const moviesData = allMovies.slice(startIndex, startIndex + moviesPerPage);
 
@@ -81,11 +86,19 @@ const Home: NextPage = () => {
     touchEndX.current = e.touches[0].clientX;
   };
 
+  // Helper function to scroll to a position after navigation
+  const scrollToPositionAfterDelay = (scrollLeft: number) => {
+    setTimeout(() => {
+      if (movieListRef.current) {
+        movieListRef.current.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+      }
+    }, SCROLL_DELAY);
+  };
+
   const handleTouchEnd = () => {
     if (!movieListRef.current) return;
 
     const container = movieListRef.current;
-    const swipeThreshold = 50; // Minimum swipe distance in pixels
     const swipeDistance = touchStartX.current - touchEndX.current;
 
     // Check if user scrolled to the edge
@@ -93,29 +106,19 @@ const Home: NextPage = () => {
     const scrollWidth = container.scrollWidth;
     const clientWidth = container.clientWidth;
     const atStart = scrollLeft === 0;
-    const atEnd = Math.abs(scrollWidth - clientWidth - scrollLeft) < 1;
+    const atEnd = Math.abs(scrollWidth - clientWidth - scrollLeft) < SCROLL_TOLERANCE;
 
     // Swipe left (move finger left = swipe left) at the end of the list
-    if (swipeDistance > swipeThreshold && atEnd && startIndex + moviesPerPage < allMovies.length) {
+    if (swipeDistance > SWIPE_THRESHOLD && atEnd && startIndex + moviesPerPage < allMovies.length) {
       handleNext();
       // Scroll to the start of the new page (first item)
-      setTimeout(() => {
-        if (movieListRef.current) {
-          movieListRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        }
-      }, 100);
+      scrollToPositionAfterDelay(0);
     }
     // Swipe right (move finger right = swipe right) at the beginning of the list
-    else if (swipeDistance < -swipeThreshold && atStart && startIndex > 0) {
+    else if (swipeDistance < -SWIPE_THRESHOLD && atStart && startIndex > 0) {
       handlePrevious();
       // Scroll to the end of the new page (last item)
-      setTimeout(() => {
-        if (movieListRef.current) {
-          const scrollWidth = movieListRef.current.scrollWidth;
-          const clientWidth = movieListRef.current.clientWidth;
-          movieListRef.current.scrollTo({ left: scrollWidth - clientWidth, behavior: 'smooth' });
-        }
-      }, 100);
+      scrollToPositionAfterDelay(scrollWidth - clientWidth);
     }
 
     // Reset touch positions
