@@ -12,12 +12,13 @@ export const useMovie = (id: string) => {
   const router = useRouter();
   const basePath = router.basePath;
 
-  useSWR<MovieInfo>(`${basePath}/api/getMovie?id=${id}`, fetcher, {
+  // Only fetch if id is not empty
+  useSWR<MovieInfo>(id ? `${basePath}/api/getMovie?id=${id}` : null, fetcher, {
     onSuccess: setData,
     onError: (err) => setError(err.message),
   });
   return {
-    loading: !error && !data,
+    loading: !error && !data && !!id,
     error,
     data,
   };

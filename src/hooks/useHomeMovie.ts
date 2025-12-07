@@ -1,41 +1,25 @@
 // Hooks
 import useMovie from "./useMovie";
 
-export const useHomeMovie = (idOne: string = '', idTwo: string = '', idThree: string = '', idFour: string = '', idFive: string = '') => {
-  const {
-    data: movieOne,
-    loading: movieOneLoading,
-    error: movieOneError,
-  } = useMovie(idOne);
+export const useHomeMovie = (movieIds: string[]) => {
+  // Call useMovie for each ID - hooks must be called unconditionally
+  // but we pass empty string when there's no movie at that index
+  const movie0 = useMovie(movieIds[0] || '');
+  const movie1 = useMovie(movieIds[1] || '');
+  const movie2 = useMovie(movieIds[2] || '');
+  const movie3 = useMovie(movieIds[3] || '');
+  const movie4 = useMovie(movieIds[4] || '');
 
-  const {
-    data: movieTwo,
-    loading: movieTwoLoading,
-    error: movieTwoError,
-  } = useMovie(idTwo);
-
-  const {
-    data: movieThree,
-    loading: movieThreeLoading,
-    error: movieThreeError,
-  } = useMovie(idThree);
-
-  const {
-    data: movieFour,
-    loading: movieFourLoading,
-    error: movieFourError,
-  } = useMovie(idFour);
-
-  const {
-    data: movieFive,
-    loading: movieFiveLoading,
-    error: movieFiveError,
-  } = useMovie(idFive);
+  // Collect all results
+  const allResults = [movie0, movie1, movie2, movie3, movie4];
+  
+  // Filter only the results that correspond to valid movie IDs
+  const validResults = allResults.slice(0, movieIds.length);
 
   return {
-    movieLoading: movieOneLoading || movieTwoLoading || movieThreeLoading || movieFourLoading || movieFiveLoading,
-    movieError: movieOneError || movieTwoError || movieThreeError || movieFourError || movieFiveError,
-    movieData: [movieOne, movieTwo, movieThree, movieFour, movieFive],
+    movieLoading: validResults.some(result => result.loading),
+    movieError: validResults.some(result => result.error),
+    movieData: validResults.map(result => result.data),
   };
 };
 
