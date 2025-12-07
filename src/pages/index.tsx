@@ -86,15 +86,6 @@ const Home: NextPage = () => {
     touchEndX.current = e.touches[0].clientX;
   };
 
-  // Helper function to scroll to a position after navigation
-  const scrollToPositionAfterDelay = (scrollLeft: number) => {
-    setTimeout(() => {
-      if (movieListRef.current) {
-        movieListRef.current.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-      }
-    }, SCROLL_DELAY);
-  };
-
   const handleTouchEnd = () => {
     if (!movieListRef.current) return;
 
@@ -109,16 +100,26 @@ const Home: NextPage = () => {
     const atEnd = Math.abs(scrollWidth - clientWidth - scrollLeft) < SCROLL_TOLERANCE;
 
     // Swipe left (move finger left = swipe left) at the end of the list
-    if (swipeDistance > SWIPE_THRESHOLD && atEnd && startIndex + moviesPerPage < allMovies.length) {
+    if (swipeDistance > SWIPE_THRESHOLD && atEnd) {
       handleNext();
       // Scroll to the start of the new page (first item)
-      scrollToPositionAfterDelay(0);
+      setTimeout(() => {
+        if (movieListRef.current) {
+          movieListRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        }
+      }, SCROLL_DELAY);
     }
     // Swipe right (move finger right = swipe right) at the beginning of the list
-    else if (swipeDistance < -SWIPE_THRESHOLD && atStart && startIndex > 0) {
+    else if (swipeDistance < -SWIPE_THRESHOLD && atStart) {
       handlePrevious();
       // Scroll to the end of the new page (last item)
-      scrollToPositionAfterDelay(scrollWidth - clientWidth);
+      setTimeout(() => {
+        if (movieListRef.current) {
+          const scrollWidth = movieListRef.current.scrollWidth;
+          const clientWidth = movieListRef.current.clientWidth;
+          movieListRef.current.scrollTo({ left: scrollWidth - clientWidth, behavior: 'smooth' });
+        }
+      }, SCROLL_DELAY);
     }
 
     // Reset touch positions
