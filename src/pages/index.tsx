@@ -58,8 +58,19 @@ const Home: NextPage = () => {
   const moviesData = allMovies.slice(startIndex, startIndex + moviesPerPage);
 
   const handleNext = () => {
-    const nextIndex = Math.min(startIndex + moviesPerPage, maxStartIndex);
-    if (nextIndex > startIndex) {
+    let nextIndex = startIndex + moviesPerPage;
+    
+    // Si le prochain index dépasse la limite, ajuster pour afficher les derniers films
+    if (nextIndex >= allMovies.length) {
+      nextIndex = maxStartIndex;
+    }
+    
+    // Si le prochain index laisserait moins de moviesPerPage films, ajuster pour afficher les derniers
+    if (nextIndex + moviesPerPage > allMovies.length && nextIndex < maxStartIndex) {
+      nextIndex = maxStartIndex;
+    }
+    
+    if (nextIndex > startIndex && nextIndex <= maxStartIndex) {
       setStartIndex(nextIndex);
     }
   };
