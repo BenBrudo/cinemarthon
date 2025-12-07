@@ -51,7 +51,7 @@ const Home: NextPage = () => {
   // Calculer l'index maximum pour garantir toujours moviesPerPage films
   const maxStartIndex = useMemo(() => 
     Math.max(0, allMovies.length - moviesPerPage),
-    [allMovies]
+    [allMovies, moviesPerPage]
   );
 
   // Obtenir les 5 films à afficher à partir de startIndex
