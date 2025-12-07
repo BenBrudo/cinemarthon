@@ -89,11 +89,11 @@ const Home: NextPage = () => {
   };
 
   const { movieData, movieLoading, movieError } = useHomeMovie(
-    moviesData[0]?.id,
-    moviesData[1]?.id,
-    moviesData[2]?.id,
-    moviesData[3]?.id,
-    moviesData[4]?.id
+    moviesData[0]?.id || '',
+    moviesData[1]?.id || '',
+    moviesData[2]?.id || '',
+    moviesData[3]?.id || '',
+    moviesData[4]?.id || ''
   );
 
   // Ajouter les dates de diffusion aux données des films
