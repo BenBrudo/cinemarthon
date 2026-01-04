@@ -88,7 +88,7 @@ const MoviePage: NextPage = () => {
                 </div>
               </div>
 
-              <div className="space-y-10">
+              <div className="space-y-24">
                 <PageItem title="Résumé">
                   <div className="text-gray-600">
                     {movie.overview || "Wow... This is so empty."}
@@ -98,9 +98,7 @@ const MoviePage: NextPage = () => {
                 {movie.release_date && (
                   <PageItem title="Date de sortie">
                     <div className="text-gray-600">
-                      <div className="text-gray-600">
-                        {getFormattedDate(movie.release_date)}
-                      </div>
+                      {getFormattedDate(movie.release_date)}
                     </div>
                   </PageItem>
                 )}
