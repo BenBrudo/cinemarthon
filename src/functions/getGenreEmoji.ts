@@ -18,30 +18,30 @@ export const getGenreEmoji = (genre: string): string => {
       return "🔬";
     case "Sci-Fi & Fantasy":
       return "🔬";
-    case "Documentary":
-      return "🎥";
+    case "Documentary" :
     case "Documentaire":
       return "🎥";
     case "Comedy":
       return "🤣";
     case "Drama":
+    case "Drame":
       return "🎬";
     case "Fantasy":
       return "🧙‍♂️";
     case "Historical":
       return "🏛️";
     case "Horror":
-      return "🧙‍♀️";
+      return "🔪";
     case "Mystery":
       return "🕵️‍♀️";
     case "Romance":
       return "💑";
     case "Science Fiction":
-      return "🧑‍🦯";
+      return "👽";
     case "Thriller":
-      return "🧙‍♂️";
+      return "😱";
     case "Western":
-      return "🗡️";
+      return "🤠";
     default:
       return "🤷‍♂️";
   }
