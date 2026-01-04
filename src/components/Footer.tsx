@@ -15,17 +15,7 @@ export const Footer: React.FC = () => (
             <p>CINE MERCREDI ET CINEFAMILLE : 3€</p>
             <p>Carte 5 entrées : 22,5€ soit 4,5€ la place </p> 
             <p>Carte 10 entrées : 45€ + 1 entrée gratuite soit 4,1€ la place.</p>
-            <p>All content and images belong to{" "}
-              <a
-                href="https://www.themoviedb.org/"
-                target="_blank"
-                rel="noreferrer"
-                className="underline"
-              >
-                TMDb
-              </a>.
-            </p>
-
+            <p>Tout le contenu et les images appartiennent à <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer" className="underline">TMDb</a>.</p>
           </div>
         </div>
 

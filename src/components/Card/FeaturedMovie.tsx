@@ -51,7 +51,7 @@ export const FeaturedMoviedCard: React.FC<{ movie: MovieWithScreening }> = ({
 
                 <div className="flex flex-col items-start gap-2 overflow-hidden">
                   <div>
-                    {Math.floor(movie.runtime /60)}h {movie.runtime % 60}m
+                    {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m
                   </div>
                 </div>
               </div>
