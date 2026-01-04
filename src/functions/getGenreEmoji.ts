@@ -18,7 +18,10 @@ export const getGenreEmoji = (genre: string): string => {
       return "🔬";
     case "Sci-Fi & Fantasy":
       return "🔬";
-
+    case "Documentary":
+      return "🎥";
+    case "Documentaire":
+      return "🎥";
     case "Comedy":
       return "🤣";
     case "Drama":
