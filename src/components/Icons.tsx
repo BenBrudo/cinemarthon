@@ -123,6 +123,39 @@ export const Menu: React.FC<{ className: string }> = ({ className }) => (
 
 // Brand
 
+export const Allocine: React.FC<{ className: string }> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 56 80"
+    fill="none"
+    className={className}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M45.39 2.28A2.71 2.71 0 0 0 42.3 0L30.93 1.83a8.75 8.75 0 0 1-17.28 2.74L2.28 6.37A2.71 2.71 0 0 0 0 9.46l10.78 68a2.7 2.7 0 0 0 3.09 2.25l11.37-1.8a8.75 8.75 0 0 1 17.31-2.71l11.37-1.8a2.69 2.69 0 0 0 2.24-3.09z"
+      fill="black"
+    />
+<path xmlns="http://www.w3.org/2000/svg" d="M31.46 54.83l-1.31-7.12a2.91 2.91 0 0 0-.94-1.45c-1.37-1.07-5.08 1.2-3.34-7s4.2-4.6 5.89-5a2.84 2.84 0 0 0 1.44-1l4.09-6a2 2 0 0 0-.16-2.42c-1.14-1.17-3-2.87-4.37-3.17-3-.64-10.37 4.13-12.95 16.24S22 57.45 25 58.09c1.4.3 3.77-.51 5.28-1.12a2 2 0 0 0 1.14-2.14"/>
+  </svg>
+);
+
+export const Facebook: React.FC<{ className: string }> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 32 32"
+    fill="none"
+    className={className}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18 28V18h3.5l0.5-4h-4v-2.5c0-1.1 0.4-1.9 2-1.9h2V6.3c-0.4,0-1.6-0.1-3-0.1c-3,0-5,1.9-5,5.3V14H10v4h4v10H18z"
+      fill="black"
+    />
+  </svg>
+);
+
 export const Github: React.FC<{ className: string }> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
