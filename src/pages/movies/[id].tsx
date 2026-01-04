@@ -87,60 +87,40 @@ const MoviePage: NextPage = () => {
                   {movie.homepage && <Homepage link={movie.homepage} />}
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div className="space-y-40">
-            <PageItem title="Résumé">
-              <div className="text-gray-600">
-                {movie.overview || "Wow... This is so empty."}
-              </div>
-            </PageItem>
-
-            {movie.release_date && (
-              <PageItem title="Date de sortie">
-                <div className="text-gray-600">
+              <div className="space-y-10">
+                <PageItem title="Résumé">
                   <div className="text-gray-600">
-                    {getFormattedDate(movie.release_date)}
+                    {movie.overview || "Wow... This is so empty."}
                   </div>
-                </div>
-              </PageItem>
-            )}
+                </PageItem>
 
-            <PageItem title="Budget/Revenue">
-              <div className="text-gray-600">
-                <RevenueAndBudget
-                  budget={movie.budget}
-                  revenue={movie.revenue}
-                  calculator={calculator}
-                />
+                {movie.release_date && (
+                  <PageItem title="Date de sortie">
+                    <div className="text-gray-600">
+                      <div className="text-gray-600">
+                        {getFormattedDate(movie.release_date)}
+                      </div>
+                    </div>
+                  </PageItem>
+                )}
+
+                <PageItem title="Casting">
+                  <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3">
+                    {movie.cast.map((cast, index) => (
+                      <PersonCard
+                        key={index}
+                        person={cast}
+                        personAs={cast.character}
+                      />
+                    ))}
+                  </div>
+                </PageItem>
               </div>
-            </PageItem>
+            </div>
           </div>
 
-          <PageItem title="Casting">
-            <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3">
-              {movie.cast.map((cast, index) => (
-                <PersonCard
-                  key={index}
-                  person={cast}
-                  personAs={cast.character}
-                />
-              ))}
-            </div>
-          </PageItem>
 
-          <PageItem title="Critiques">
-            <div className="grid w-full gap-4">
-              {!movie.comments.length ? (
-                <span className="opacity-50">Aucune pour le moment</span>
-              ) : (
-                movie.comments.map((review) => (
-                  <ReviewCard key={review.id} review={review} />
-                ))
-              )}
-            </div>
-          </PageItem>
         </div>
       </>
     );
