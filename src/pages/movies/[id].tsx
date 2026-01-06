@@ -117,8 +117,6 @@ const MoviePage: NextPage = () => {
               </div>
             </div>
           </div>
-
-
         </div>
       </>
     );
