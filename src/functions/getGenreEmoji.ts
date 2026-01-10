@@ -2,6 +2,7 @@
 export const getGenreEmoji = (genre: string): string => {
   switch (genre) {
     case "Action":
+    case "Crime":
       return "🗡️";
     case "Action & Adventure":
       return "🗡️";
@@ -10,7 +11,6 @@ export const getGenreEmoji = (genre: string): string => {
       return "🗺️";
     case "Animation":
       return "🎭";
-
     case "Adult":
       return "🔞";
 
@@ -22,6 +22,7 @@ export const getGenreEmoji = (genre: string): string => {
     case "Documentaire":
       return "🎥";
     case "Comedy":
+    case "Comédie":
       return "🤣";
     case "Drama":
     case "Drame":
