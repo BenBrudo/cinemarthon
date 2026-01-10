@@ -101,7 +101,7 @@ const ActorPage: NextPage = () => {
                     {person.biography ? (
                       person.biography
                     ) : (
-                      <span>Aucune biographie connue à ce jour.</span>
+                      <span>Aucune biographie connue &agrave; ce jour.</span>
                     )}
                   </div>
                 </div>
@@ -112,7 +112,7 @@ const ActorPage: NextPage = () => {
                   </h1>
 
                   {!person.cast?.length ? (
-                    <span>On dirait qu'il n'y a rien.</span>
+                    <span>On dirait qu&apos;il n&apos;y a rien.</span>
                   ) : (
                     <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3">
                       {person.cast?.map((cast, idx) => (
