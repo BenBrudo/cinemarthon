@@ -1,104 +1,142 @@
 {
   "movies": [
     {
-      "id": "1108412-veilleurs-de-nuit",
-      "screening_date": "2025-09-19",
-      "hours": "21:00"
+      "id": "1258509-stin-sem-eftir-er",
+      "screening_date": "2026-01-09",
+      "hours": "20:30",
+      "title": "L'Amour qu'il nous reste"
     },
     {
-      "id": "1267905-the-roses",
-      "screening_date": "2025-09-20",
-      "hours": "18:00"
+      "id": "1211442-rebuilding",
+      "screening_date": "2026-01-10",
+      "hours": "17:30",
+      "title": "Rebuilding"
     },
     {
-      "id": "1356670-heldin",
-      "screening_date": "2025-09-20",
-      "hours": "21:00"
+      "id": "1266826-la-petite-cuisine-de-mehdi",
+      "screening_date": "2026-01-10",
+      "hours": "20:30",
+      "title": "La petite cuisine de Mehdi"
     },
     {
-      "id": "1364904",
-      "screening_date": "2025-09-21",
-      "hours": "18:00"
+      "id": "1309373-le-chant-des-forets",
+      "screening_date": "2026-01-11",
+      "hours": "17:30",
+      "title": "Le chant des forêts"
     },
     {
-      "id": "1320414-the-witness",
-      "screening_date": "2025-09-23",
-      "hours": "21:00"
+      "id": "1220564-o-agente-secreto",
+      "screening_date": "2026-01-13",
+      "hours": "20:30",
+      "title": "L'agent secret"
     },
     {
-      "id": "1108782-le-sang-et-la-boue",
-      "screening_date": "2025-09-26",
-      "hours": "20:30"
+      "id": "1069650-l-engloutie",
+      "screening_date": "2026-01-16",
+      "hours": "20:30",
+      "title": "L'engloutie"
     },
     {
-      "id": "1178602-miroirs-no-3",
-      "screening_date": "2025-09-27",
-      "hours": "18:00"
+      "id": "1368166-the-housemaid",
+      "screening_date": "2026-01-17",
+      "hours": "17:30",
+      "title": "La femme de ménage"
     },
     {
-      "id": "1115780",
-      "screening_date": "2025-09-27",
-      "hours": "21:00"
+      "id": "1269644-amrum",
+      "screening_date": "2026-01-17",
+      "hours": "20:30",
+      "title": "Une enfance allemande"
     },
     {
-      "id": "1195108",
-      "screening_date": "2025-09-28",
-      "hours": "18:00"
+      "id": "991494-the-spongebob-movie-search-for-squarepants",
+      "screening_date": "2026-01-18",
+      "hours": "15:00",
+      "title": "Bob l'éponge le film"
     },
     {
-      "id": "1313032-ciudad-sin-sueno",
-      "screening_date": "2025-09-30",
-      "hours": "21:00"
+      "id": "1421153",
+      "screening_date": "2026-01-18",
+      "hours": "17:30",
+      "title": "Le temps des moissons"
     },
     {
-      "id": "1151272-sirat",
-      "screening_date": "2025-10-03",
-      "hours": "21:00"
+      "id": "1379266",
+      "screening_date": "2026-01-20",
+      "hours": "20:30",
+      "title": "Le maître du kabuki"
     },
     {
-      "id": "1289936-downton-abbey-the-grand-finale",
-      "screening_date": "2025-10-04",
-      "hours": "18:00"
+      "id": "1308618-qui-brille-au-combat",
+      "screening_date": "2026-01-23",
+      "hours": "20:30",
+      "title": "Qui brille au combat"
     },
     {
-      "id": "979976-connemara",
-      "screening_date": "2025-10-04",
-      "hours": "21:00"
+      "id": "1371185-song-sung-blue",
+      "screening_date": "2026-01-24",
+      "hours": "17:30",
+      "title": "Sur un air de blues"
     },
     {
-      "id": "1421157",
-      "screening_date": "2025-10-05",
-      "hours": "18:00"
+      "id": "1383289-laurent-dans-le-vent",
+      "screening_date": "2026-01-24",
+      "hours": "20:30",
+      "title": "Laurent dans le vent"
     },
     {
-      "id": "1313229-nino",
-      "screening_date": "2025-10-07",
-      "hours": "21:00"
+      "id": "975335-magalhaes",
+      "screening_date": "2026-01-25",
+      "hours": "17:30",
+      "title": "Magellan"
     },
     {
-      "id": "999075",
-      "screening_date": "2025-10-08",
-      "hours": "21:00"
+      "id": "1001288-vade-retro",
+      "screening_date": "2026-01-27",
+      "hours": "20:30",
+      "title": "Vade Retro"
     },
     {
-      "id": "1172091-wilding",
-      "screening_date": "2025-10-11",
-      "hours": "18:00"
+      "id": "1235277-la-pire-mere-au-monde",
+      "screening_date": "2026-01-28",
+      "hours": "15:00",
+      "title": "La pire mère au monde"
     },
     {
-      "id": "1315702-dalloway",
-      "screening_date": "2025-10-11",
-      "hours": "21:00"
+      "id": "1290436",
+      "screening_date": "2026-01-30",
+      "hours": "20:30",
+      "title": "Ma Frère"
     },
     {
-      "id": "1392527",
-      "screening_date": "2025-10-12",
-      "hours": "18:00"
+      "id": "1159206-father-mother-sister-brother",
+      "screening_date": "2026-01-31",
+      "hours": "17:30",
+      "title": "Father Mother Sister Brother"
     },
     {
-      "id": "1293858-l-interet-d-adam",
-      "screening_date": "2025-10-14",
-      "hours": "21:00"
+      "id": "1290450-love-me-tender",
+      "screening_date": "2026-01-31",
+      "hours": "20:30",
+      "title": "Love Me Tender"
+    },
+    {
+      "id": "1585049-premieres-neiges",
+      "screening_date": "2026-02-01",
+      "hours": "16:00",
+      "title": "Premières neiges"
+    },
+    {
+      "id": "1221061-in-die-sonne-schauen",
+      "screening_date": "2026-02-01",
+      "hours": "17:30",
+      "title": "Les échos du passé"
+    },
+    {
+      "id": "1567472-tout-va-bien",
+      "screening_date": "2026-02-03",
+      "hours": "20:30",
+      "title": "Tout va bien"
     }
   ]
 }
