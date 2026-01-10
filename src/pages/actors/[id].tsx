@@ -91,59 +91,44 @@ const ActorPage: NextPage = () => {
                   {person.homepage && <Homepage link={person.homepage} />}
                 </div>
               </div>
-            </div>
-          </div>
+              <div className="space-y-24">
+                <div className="flex flex-col items-center gap-4 mx-auto text-center md:w-1/2">
+                  <h1 className="text-4xl font-bold text-gray-800">
+                    Biographie
+                  </h1>
 
-          <div className="space-y-40">
-            <div className="flex flex-col items-center gap-4 mx-auto text-center md:w-1/2">
-              <h1 className="text-4xl font-bold text-gray-800">Biography</h1>
-
-              <div className="text-gray-600">
-                {person.biography ? (
-                  person.biography
-                ) : (
-                  <span>Weird... They do not have a biography, yet.</span>
-                )}
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center gap-4 mx-auto text-center md:w-1/2">
-              <h1 className="text-4xl font-bold text-gray-800">
-                Also Known As
-              </h1>
-
-              <div className="text-gray-600 divide-gray-300">
-                {!person.also_known_as?.length && <span>Well, nothing.</span>}
-                {person.also_known_as?.map((name, index) => (
-                  <span
-                    key={name}
-                    className={"px-3" + (index % 2 === 0 ? " opacity-50" : "")}
-                  >
-                    {name}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center gap-4 mx-auto text-center md:w-1/2">
-              <h1 className="text-4xl font-bold text-gray-800">Known For</h1>
-
-              {!person.cast?.length ? (
-                <span>Seems like nothing.</span>
-              ) : (
-                <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3">
-                  {person.cast?.map((cast, idx) => (
-                    <MovieCard
-                      key={idx}
-                      movie={{
-                        ...cast,
-                        genre_ids: [],
-                        media_type: "movie",
-                      }}
-                    />
-                  ))}
+                  <div className="text-gray-600">
+                    {person.biography ? (
+                      person.biography
+                    ) : (
+                      <span>Aucune biographie connue à ce jour.</span>
+                    )}
+                  </div>
                 </div>
-              )}
+
+                <div className="flex flex-col items-center gap-4 mx-auto text-center md:w-1/2">
+                  <h1 className="text-4xl font-bold text-gray-800">
+                    Connu(e) Pour
+                  </h1>
+
+                  {!person.cast?.length ? (
+                    <span>On dirait qu'il n'y a rien.</span>
+                  ) : (
+                    <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3">
+                      {person.cast?.map((cast, idx) => (
+                        <MovieCard
+                          key={idx}
+                          movie={{
+                            ...cast,
+                            genre_ids: [],
+                            media_type: "movie",
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
