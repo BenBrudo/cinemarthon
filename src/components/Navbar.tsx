@@ -42,10 +42,10 @@ export const Navbar: React.FC = () => {
             className="flex items-center py-5 space-x-2 md:py-0 text-brand-dark-blue"
           >
             <div>
-              <Play className="w-6 h-6" />
+              <Play className="w-8 h-8" />
             </div>
 
-            <span className="text-lg font-extrabold">Le Silverado</span>
+            <span className="text-4xl md:text-5xl font-medium" style={{ fontFamily: 'Monoton, cursive' }}>Le Silverado</span>
           </Link>
 
           {/* Desktop Navigation */}
