@@ -231,7 +231,7 @@ const Home: NextPage = () => {
           )}
           <div 
             ref={movieListRef}
-            className="flex gap-6 overflow-x-auto md:overflow-hidden md:grid md:grid-cols-5 snap-x snap-mandatory"
+            className="flex gap-6 overflow-x-auto md:overflow-visible md:grid md:grid-cols-5 snap-x snap-mandatory md:py-4"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -240,7 +240,7 @@ const Home: NextPage = () => {
               <LoaderCard count={5} type="card-large" />
             ) : (
               moviesWithScreenings?.map((item) => (
-                <div key={item?.id} className="flex-shrink-0 w-full snap-start md:w-auto">
+                <div key={item?.id} className="flex-shrink-0 w-full snap-start md:w-auto group">
                   <FeaturedMoviedCard movie={item} />
                 </div>
               ))
