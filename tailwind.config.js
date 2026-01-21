@@ -6,7 +6,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ["Futura", "sans-serif"],
+      sans: ["Roboto", "sans-serif"],
     },
     extend: {
       colors: {
