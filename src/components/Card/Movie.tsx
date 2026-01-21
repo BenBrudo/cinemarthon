@@ -47,7 +47,7 @@ export const MovieCard: React.FC<{
               opacity: 1,
               y: 0,
             }}
-            className="px-4 text-lg font-medium leading-tight text-center text-white text-shadow-md line-clamp-2"
+            className="px-4 text-xl font-bold leading-tight text-center text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] line-clamp-2"
           >
             {movie.title || movie.name}
           </motion.h3>

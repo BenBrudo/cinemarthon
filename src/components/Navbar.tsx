@@ -45,7 +45,7 @@ export const Navbar: React.FC = () => {
               <Play className="w-6 h-6" />
             </div>
 
-            <span className="text-lg font-semibold">Le Silverado</span>
+            <span className="text-lg font-extrabold">Le Silverado</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
             {links.map((link) => (
               <Link href={link.href} key={link.label}>
                 <li
-                  className={`h-full p-6 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200 ${
+                  className={`h-full p-6 font-bold text-brand-dark-blue transition-colors hover:bg-gray-200 ${
                     route === link.href && "bg-gray-200"
                   }`}
                 >
