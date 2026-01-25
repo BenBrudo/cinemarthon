@@ -42,10 +42,10 @@ export const Navbar: React.FC = () => {
             className="flex items-center py-5 space-x-2 md:py-0 text-brand-dark-blue"
           >
             <div>
-              <Play className="w-6 h-6" />
+              <Play className="w-8 h-8" />
             </div>
 
-            <span className="text-lg font-semibold">Le Silverado</span>
+            <span className="text-4xl md:text-5xl font-medium" style={{ fontFamily: 'Monoton, cursive' }}>Le Silverado</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
             {links.map((link) => (
               <Link href={link.href} key={link.label}>
                 <li
-                  className={`h-full p-6 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200 ${
+                  className={`h-full p-6 font-bold text-brand-dark-blue transition-colors hover:bg-gray-200 ${
                     route === link.href && "bg-gray-200"
                   }`}
                 >

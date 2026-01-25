@@ -34,7 +34,7 @@ export const FeaturedCard: React.FC<{ movie: DiscoveryResult }> = ({
 
             <div className="flex flex-col items-start gap-4">
               <div className="flex flex-col items-start gap-2 overflow-hidden">
-                <div className="text-lg font-medium leading-tight line-clamp-2">
+                <div className="text-2xl font-bold leading-tight line-clamp-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                   {movie.title}
                 </div>
 
