@@ -45,7 +45,7 @@ const SearchPage: NextPage = () => {
             className="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
           >
             <Image
-              src="/cinema/cinema-map.png"
+              src="./cinema-map.png"
               alt="Carte de localisation du Cinéma Le Silverado - Cliquez pour ouvrir Google Maps"
               width={600}
               height={450}

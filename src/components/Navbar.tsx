@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -100,7 +99,7 @@ export const Navbar: React.FC = () => {
             {/* Download Links */}
             <li className="border-t border-gray-200">
               <a
-                href="/cinema/programme-famille.pdf"
+                href="./programme-famille.pdf"
                 download="Programme-Famille.pdf"
                 className="flex items-center gap-2 p-4 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -111,7 +110,7 @@ export const Navbar: React.FC = () => {
             </li>
             <li>
               <a
-                href="/cinema/programme-classique.pdf"
+                href="./programme-classique.pdf"
                 download="Programme-Classique.pdf"
                 className="flex items-center gap-2 p-4 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200"
                 onClick={() => setIsMobileMenuOpen(false)}
