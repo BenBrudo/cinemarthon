@@ -6,7 +6,7 @@ class MovieAppDocument extends Document {
       <Html lang="en">
         <Head>
           {/* Favicon */}
-          <link rel="icon" href="/cinema/favicon.png" />
+          <link rel="icon" href="./favicon.png" />
 
           {/* Load fonts */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
