@@ -5,16 +5,16 @@ export const getGenreEmoji = (genre: string): string => {
     case "Crime":
       return "🗡️";
     case "Action & Adventure":
-      return "🗡️";
-
+      return "🗡️🗺️";
     case "Adventure":
+    case "Aventure":
       return "🗺️";
     case "Animation":
       return "🎭";
     case "Adult":
       return "🔞";
-
     case "Sci-Fi":
+    case "Science Fiction":
       return "🔬";
     case "Sci-Fi & Fantasy":
       return "🔬";
@@ -26,25 +26,28 @@ export const getGenreEmoji = (genre: string): string => {
       return "🤣";
     case "Drama":
     case "Drame":
-      return "🎬";
+      return "😢";
     case "Fantasy":
+    case "Fantastique":
       return "🧙‍♂️";
     case "Historical":
+    case "Histoire":
       return "🏛️";
     case "Horror":
+    case "Horreur":
       return "🔪";
     case "Mystery":
+    case "Mystère":  
       return "🕵️‍♀️";
     case "Romance":
+    case "Romantique":
       return "💑";
-    case "Science Fiction":
-      return "👽";
     case "Thriller":
       return "😱";
     case "Western":
       return "🤠";
     default:
-      return "🤷‍♂️";
+      return "🎬";
   }
 };
 

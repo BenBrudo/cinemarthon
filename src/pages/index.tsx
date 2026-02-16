@@ -153,7 +153,8 @@ const Home: NextPage = () => {
   const moviesWithScreenings = movieData?.map((movie, index) => ({
     ...movie,
     screening_date: moviesData[index]?.screening_date,
-    hours: moviesData[index]?.hours
+    hours: moviesData[index]?.hours,
+    titre: moviesData[index]?.titre,
   }));
   return (
     <div className="relative px-6 md:px-0">
@@ -201,7 +202,7 @@ const Home: NextPage = () => {
                     aria-label="Sélection du programme"
                   >
                     <a
-                      href="/cinema/Programmation_famille.png"
+                      href="./Programmation_famille.png"
                       download="Programme-Famille.png"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-md"
                       onClick={() => setShowProgramMenu(false)}
@@ -210,7 +211,7 @@ const Home: NextPage = () => {
                       Programme Famille
                     </a>
                     <a
-                      href="/cinema/Programmation.pdf"
+                      href="./Programmation.pdf"
                       download="Programmation.pdf"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-md"
                       onClick={() => setShowProgramMenu(false)}

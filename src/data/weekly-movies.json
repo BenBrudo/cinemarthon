@@ -1,142 +1,148 @@
 {
   "movies": [
     {
-      "id": "1258509-stin-sem-eftir-er",
-      "screening_date": "2026-01-09",
+      "id": "1119548",
+      "screening_date": "2026-02-06",
       "hours": "20:30",
-      "title": "L'Amour qu'il nous reste"
+      "titre": "La Condition"
     },
     {
-      "id": "1211442-rebuilding",
-      "screening_date": "2026-01-10",
+      "id": "960051",
+      "screening_date": "2026-02-07",
       "hours": "17:30",
-      "title": "Rebuilding"
+      "titre": "Furcy, né libre"
     },
     {
-      "id": "1266826-la-petite-cuisine-de-mehdi",
-      "screening_date": "2026-01-10",
+      "id": "1376415",
+      "screening_date": "2026-02-07",
       "hours": "20:30",
-      "title": "La petite cuisine de Mehdi"
+      "titre": "L'Affaire Bojarski"
     },
     {
-      "id": "1309373-le-chant-des-forets",
-      "screening_date": "2026-01-11",
+      "id": "83533",
+      "screening_date": "2026-02-08",
       "hours": "17:30",
-      "title": "Le chant des forêts"
+      "titre": "Avatar: De feu & de cendres"
     },
     {
-      "id": "1220564-o-agente-secreto",
-      "screening_date": "2026-01-13",
+      "id": "1434992",
+      "screening_date": "2026-02-10",
       "hours": "20:30",
-      "title": "L'agent secret"
+      "titre": "Forêt rouge"
     },
     {
-      "id": "1069650-l-engloutie",
-      "screening_date": "2026-01-16",
-      "hours": "20:30",
-      "title": "L'engloutie"
-    },
-    {
-      "id": "1368166-the-housemaid",
-      "screening_date": "2026-01-17",
-      "hours": "17:30",
-      "title": "La femme de ménage"
-    },
-    {
-      "id": "1269644-amrum",
-      "screening_date": "2026-01-17",
-      "hours": "20:30",
-      "title": "Une enfance allemande"
-    },
-    {
-      "id": "991494-the-spongebob-movie-search-for-squarepants",
-      "screening_date": "2026-01-18",
+      "id": "1235303",
+      "screening_date": "2026-02-11",
       "hours": "15:00",
-      "title": "Bob l'éponge le film"
+      "titre": "Baise-en-ville"
     },
     {
-      "id": "1421153",
-      "screening_date": "2026-01-18",
+      "id": "1562802",
+      "screening_date": "2026-02-13",
+      "hours": "20:30",
+      "titre": "Kogis, ensemble pour soigner la terre"
+    },
+    {
+      "id": "858024",
+      "screening_date": "2026-02-14",
       "hours": "17:30",
-      "title": "Le temps des moissons"
+      "titre": "Hamnet"
     },
     {
-      "id": "1379266",
-      "screening_date": "2026-01-20",
+      "id": "1432596",
+      "screening_date": "2026-02-14",
       "hours": "20:30",
-      "title": "Le maître du kabuki"
+      "titre": "Palestine 36"
     },
     {
-      "id": "1308618-qui-brille-au-combat",
-      "screening_date": "2026-01-23",
-      "hours": "20:30",
-      "title": "Qui brille au combat"
-    },
-    {
-      "id": "1371185-song-sung-blue",
-      "screening_date": "2026-01-24",
-      "hours": "17:30",
-      "title": "Sur un air de blues"
-    },
-    {
-      "id": "1383289-laurent-dans-le-vent",
-      "screening_date": "2026-01-24",
-      "hours": "20:30",
-      "title": "Laurent dans le vent"
-    },
-    {
-      "id": "975335-magalhaes",
-      "screening_date": "2026-01-25",
-      "hours": "17:30",
-      "title": "Magellan"
-    },
-    {
-      "id": "1001288-vade-retro",
-      "screening_date": "2026-01-27",
-      "hours": "20:30",
-      "title": "Vade Retro"
-    },
-    {
-      "id": "1235277-la-pire-mere-au-monde",
-      "screening_date": "2026-01-28",
-      "hours": "15:00",
-      "title": "La pire mère au monde"
-    },
-    {
-      "id": "1290436",
-      "screening_date": "2026-01-30",
-      "hours": "20:30",
-      "title": "Ma Frère"
-    },
-    {
-      "id": "1159206-father-mother-sister-brother",
-      "screening_date": "2026-01-31",
-      "hours": "17:30",
-      "title": "Father Mother Sister Brother"
-    },
-    {
-      "id": "1290450-love-me-tender",
-      "screening_date": "2026-01-31",
-      "hours": "20:30",
-      "title": "Love Me Tender"
-    },
-    {
-      "id": "1585049-premieres-neiges",
-      "screening_date": "2026-02-01",
+      "id": "1597412",
+      "screening_date": "2026-02-15",
       "hours": "16:00",
-      "title": "Premières neiges"
+      "titre": "La Grande Rêvasion"
     },
     {
-      "id": "1221061-in-die-sonne-schauen",
-      "screening_date": "2026-02-01",
+      "id": "1291659",
+      "screening_date": "2026-02-15",
       "hours": "17:30",
-      "title": "Les échos du passé"
+      "titre": "Le Mage du Kremlin"
     },
     {
-      "id": "1567472-tout-va-bien",
-      "screening_date": "2026-02-03",
+      "id": "54144",
+      "screening_date": "2026-02-17",
       "hours": "20:30",
-      "title": "Tout va bien"
+      "titre": "Abel"
+    },
+    {
+      "id": "1086011",
+      "screening_date": "2026-02-20",
+      "hours": "20:30",
+      "titre": "Jusqu'à l'aube"
+    },
+    {
+      "id": "1290242",
+      "screening_date": "2026-02-21",
+      "hours": "17:30",
+      "titre": "Christy and his Brother"
+    },
+    {
+      "id": "1218412",
+      "screening_date": "2026-02-21",
+      "hours": "20:30",
+      "titre": "Promis le ciel"
+    },
+    {
+      "id": "1214931",
+      "screening_date": "2026-02-22",
+      "hours": "17:30",
+      "titre": "Nuremberg"
+    },
+    {
+      "id": "1274787",
+      "screening_date": "2026-02-24",
+      "hours": "20:30",
+      "titre": "Le retour du projectionniste"
+    },
+    {
+      "id": "1166170",
+      "screening_date": "2026-02-25",
+      "hours": "15:00",
+      "titre": "L'âme idéale"
+    },
+    {
+      "id": "598268",
+      "screening_date": "2026-02-27",
+      "hours": "20:30",
+      "titre": "Le chasseur de baleines"
+    },
+    {
+      "id": "1352624",
+      "screening_date": "2026-02-28",
+      "hours": "17:30",
+      "titre": "The Mastermind"
+    },
+    {
+      "id": "1464883",
+      "screening_date": "2026-02-28",
+      "hours": "20:30",
+      "titre": "Le gâteau du président"
+    },
+    {
+      "id": "1276521",
+      "screening_date": "2026-03-01",
+      "hours": "15:00",
+      "titre": "Biscuit le chien fantastique"
+    },
+    {
+      "id": "1397364",
+      "screening_date": "2026-03-01",
+      "hours": "17:30",
+      "titre": "La Grazia"
+    },
+    {
+      "id": "1607066",
+      "screening_date": "2026-03-03",
+      "hours": "20:30",
+      "titre": "Howard Zinn, une histoire populaire américaine 2"
     }
   ]
 }
