@@ -116,9 +116,7 @@ const AboutUs: NextPage = () => (
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="flex-1 space-y-4">
             <p className="text-gray-600 leading-relaxed">
-              Nourriture interdite, pas de bruits et profitez pleinement de votre séance.
-              Découvrez nos règles de savoir-vivre en salle pour garantir une expérience agréable
-              à tous nos spectateurs.
+              Le Silverado, le cinéma qu&apos;il est bien pour venir voir des films.
             </p>
           </div>
           <div className="flex-1">
@@ -127,28 +125,6 @@ const AboutUs: NextPage = () => (
               <Image
                 src="/images/cinema-3.jpg"
                 alt="Cinéma Silverado 3"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Section 6: Cinéma - Photo à gauche */}
-      <div className="space-y-12">
-        <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-          <div className="flex-1 space-y-4">
-            <p className="text-gray-600 leading-relaxed">
-              Le Silverado, le cinéma qu&apos;il est bien pour venir voir des films.
-            </p>
-          </div>
-          <div className="flex-1">
-            <div className="relative w-full h-80 bg-gray-300 rounded-lg overflow-hidden">
-              {/* Image placeholder - remplacer par l'image réelle */}
-              <Image
-                src="/images/cinema-4.jpg"
-                alt="Cinéma Silverado 4"
                 fill
                 className="object-cover"
               />
