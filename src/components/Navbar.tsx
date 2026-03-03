@@ -13,12 +13,12 @@ const links = [
     label: "Programmation",
   },
   {
-    href: "/about",
-    label: "Nos Bénévoles",
-  },
-  {
     href: "/search",
     label: "Le cinéma",
+  },
+  {
+    href: "/about",
+    label: "Nos Bénévoles",
   },
 ];
 
