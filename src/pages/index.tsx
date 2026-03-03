@@ -202,8 +202,8 @@ const Home: NextPage = () => {
                     aria-label="Sélection du programme"
                   >
                     <a
-                      href="./Programmation_famille.png"
-                      download="Programme-Famille.png"
+                      href="./Programmation_famille.pdf"
+                      download="Programme-Famille.pdf"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-md"
                       onClick={() => setShowProgramMenu(false)}
                       role="menuitem"
