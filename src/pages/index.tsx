@@ -202,8 +202,7 @@ const Home: NextPage = () => {
                     aria-label="Sélection du programme"
                   >
                     <a
-                      href="./Programmation_famille.pdf"
-                      download="Programme-Famille.pdf"
+                      href="/api/download?file=programme-famille"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-md"
                       onClick={() => setShowProgramMenu(false)}
                       role="menuitem"
@@ -211,8 +210,7 @@ const Home: NextPage = () => {
                       Programme Famille
                     </a>
                     <a
-                      href="./Programmation.pdf"
-                      download="Programmation.pdf"
+                      href="/api/download?file=programme-classique"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-md"
                       onClick={() => setShowProgramMenu(false)}
                       role="menuitem"

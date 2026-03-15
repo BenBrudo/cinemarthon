@@ -99,8 +99,7 @@ export const Navbar: React.FC = () => {
             {/* Download Links */}
             <li className="border-t border-gray-200">
               <a
-                href="./programme-famille.pdf"
-                download="Programme-Famille.pdf"
+                href="/api/download?file=programme-famille"
                 className="flex items-center gap-2 p-4 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -110,8 +109,7 @@ export const Navbar: React.FC = () => {
             </li>
             <li>
               <a
-                href="./programme-classique.pdf"
-                download="Programme-Classique.pdf"
+                href="/api/download?file=programme-classique"
                 className="flex items-center gap-2 p-4 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
