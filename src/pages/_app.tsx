@@ -18,8 +18,9 @@ import Footer from "../components/Footer";
 
 // Meta
 const meta = {
-  title: "Le Silverado",
-  description: "Very good Le Silverado.",
+  title: "Le Silverado - Cinéma Art et Essai",
+  description: "Le Silverado : cinéma art et essai proposant le Cinémarthon, des films pour jeune public et programmation École et Cinéma. Découvrez notre sélection de films de qualité.",
+  keywords: "cinéma, marthon, cinémarthon, silverado, art et essai, jeune public, école et cinéma, films, programmation",
 };
 
 // NProgress settings and events
@@ -38,14 +39,18 @@ function MovieApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
+        <meta name="keywords" content={meta.keywords} />
         <meta name="theme-color" content="#1D556F" />
         <link rel="icon" href="/favicon.png" />
 
         {/* Open-Graph */}
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="fr_FR" />
 
         {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
       </Head>

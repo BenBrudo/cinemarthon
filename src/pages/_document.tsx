@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 class MovieAppDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="fr">
         <Head>
           {/* Favicon */}
           <link rel="icon" href="./favicon.png" />
