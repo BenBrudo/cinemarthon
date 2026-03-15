@@ -12,7 +12,7 @@ export const Footer: React.FC = () => (
           <div className="opacity-50">
             <p>CINEMA LE SILVERADO - 10 RUE DES ECOLES, 16380 MARTHON / (ACCES PMR). </p>
             <p>NORMAL : 5,5€ / REDUIT (demandeurs d’emploi, étudiants, -16 ans) : 4,5€</p>
-            <p>CINE MERCREDI ET CINEFAMILLE : 3€</p>
+            <p>CINE MERCREDI : 4€ ET CINEFAMILLE : 3€</p>
             <p>Carte 5 entrées : 22,5€ soit 4,5€ la place </p> 
             <p>Carte 10 entrées : 45€ + 1 entrée gratuite soit 4,1€ la place.</p>
             <p>Tout le contenu et les images appartiennent à <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer" className="underline">TMDb</a>.</p>

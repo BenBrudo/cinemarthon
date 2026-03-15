@@ -20,7 +20,7 @@ const SearchPage: NextPage = () => {
               Silverado est uniquement géré par les bénévoles de
               l&apos;association CINEMARTHON. Doté d&apos;une salle en gradins
               de 114 fauteuils et du son numérique, il propose chaque semaine 5
-              à 6 séances.
+              à 7 séances.
             </p>
             <p className="mb-4">
               Le Silverado défend une ligne éditoriale ambitieuse faisant la
@@ -100,8 +100,8 @@ const SearchPage: NextPage = () => {
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
             <div className="flex-1 space-y-3 md:space-y-4">
               <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                Le Silverado, le cinéma qu&apos;il est bien pour venir voir des
-                films.
+                &quot;Le Silverado, le cinéma qu&apos;il est bien pour venir voir des
+                films.&quot;
               </p>
             </div>
             <div className="flex-1 w-full">
@@ -116,24 +116,6 @@ const SearchPage: NextPage = () => {
               </div>
             </div>
           </div>
-        </div>
-        {/* Image carte avec lien vers Google Maps */}
-        <div className="flex justify-center my-8">
-          <a
-            href="https://maps.app.goo.gl/pwg3nZeo8JGxQqsU8"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-          >
-            <Image
-              src="./cinema-map.png"
-              alt="Carte de localisation du Cinéma Le Silverado - Cliquez pour ouvrir Google Maps"
-              width={600}
-              height={450}
-              className="hover:opacity-90 transition-opacity duration-300"
-              unoptimized
-            />
-          </a>
         </div>
       </div>
     </>
