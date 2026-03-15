@@ -20,6 +20,10 @@ const links = [
     href: "/about",
     label: "Nos Bénévoles",
   },
+  {
+    href: "/contact",
+    label: "Contact",
+  },
 ];
 
 export const Navbar: React.FC = () => {
