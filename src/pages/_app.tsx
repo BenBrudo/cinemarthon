@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Router from "next/router";
+import { useEffect } from "react";
 
 // NProgress
 import NProgress from "nprogress";
@@ -34,10 +35,25 @@ Router.events.on("routeChangeComplete", () => NProgress.done(true));
 Router.events.on("routeChangeError", () => NProgress.done(true));
 
 function MovieApp({ Component, pageProps }: AppProps) {
+  // Register Service Worker for PWA
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/sw.js')
+        .then((registration) => {
+          console.log('Service Worker enregistré avec succès:', registration.scope);
+        })
+        .catch((error) => {
+          console.log('Échec de l\'enregistrement du Service Worker:', error);
+        });
+    }
+  }, []);
+
   return (
     <>
       <Head>
         <title>{meta.title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="description" content={meta.description} />
         <meta name="keywords" content={meta.keywords} />
         <meta name="theme-color" content="#1D556F" />

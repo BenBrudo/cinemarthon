@@ -38,6 +38,7 @@ const AboutUs: NextPage = () => (
                 src="/images/team-1.jpg"
                 alt="Équipe des bénévoles"
                 fill
+                priority
                 className="object-cover"
               />
             </div>
@@ -77,7 +78,7 @@ const AboutUs: NextPage = () => (
 
       {/* Section 3: Galerie photos des bénévoles */}
       <div className="pb-12 md:pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {/* Photo 1 */}
           <div className="relative w-full h-64 md:h-96 bg-gray-300 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
             <Image
@@ -103,6 +104,16 @@ const AboutUs: NextPage = () => (
             <Image
               src="/images/Jean Yves et serge.jpg"
               alt="Jean-Yves et Serge en cabine"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          {/* Photo 4 */}
+          <div className="relative w-full h-64 md:h-96 bg-gray-300 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Image
+              src="/images/Dominique et Bruno.jpeg"
+              alt="Dominique et Bruno"
               fill
               className="object-cover"
             />

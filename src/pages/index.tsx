@@ -167,9 +167,9 @@ const Home: NextPage = () => {
               <button
                 onClick={handlePrevious}
                 disabled={startIndex === 0}
-                className={`px-4 py-2 rounded-md transition-colors ${startIndex === 0
-                    ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
-                    : 'text-white bg-blue-600 hover:bg-blue-700'
+                className={`px-4 py-2 font-medium rounded-md transition-colors shadow-sm ${startIndex === 0
+                    ? 'text-gray-400 bg-gray-200 cursor-not-allowed'
+                    : 'text-white bg-brand-dark-blue hover:bg-brand-blue hover:shadow-md'
                   }`}
               >
                 Précédent
@@ -177,9 +177,9 @@ const Home: NextPage = () => {
               <button
                 onClick={handleNext}
                 disabled={startIndex + moviesPerPage >= allMovies.length}
-                className={`px-4 py-2 rounded-md transition-colors ${startIndex + moviesPerPage >= allMovies.length
-                    ? 'text-gray-500 bg-gray-200 cursor-not-allowed'
-                    : 'text-white bg-blue-600 hover:bg-blue-700'
+                className={`px-4 py-2 font-medium rounded-md transition-colors shadow-sm ${startIndex + moviesPerPage >= allMovies.length
+                    ? 'text-gray-400 bg-gray-200 cursor-not-allowed'
+                    : 'text-white bg-brand-dark-blue hover:bg-brand-blue hover:shadow-md'
                   }`}
               >
                 Suivant
@@ -187,7 +187,7 @@ const Home: NextPage = () => {
               <div className="relative">
                 <button
                   onClick={() => setShowProgramMenu(!showProgramMenu)}
-                  className="p-2 text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
+                  className="p-2 text-white bg-brand-dark-blue hover:bg-brand-blue rounded-md transition-colors shadow-sm hover:shadow-md"
                   title="Télécharger un programme"
                   aria-label="Télécharger un programme"
                   aria-expanded={showProgramMenu}
@@ -203,17 +203,19 @@ const Home: NextPage = () => {
                   >
                     <a
                       href="/api/download?file=programme-famille"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-md"
+                      className="block px-4 py-2 text-sm font-medium text-brand-dark-blue hover:bg-gray-200 transition-colors rounded-t-md"
                       onClick={() => setShowProgramMenu(false)}
                       role="menuitem"
+                      download
                     >
                       Programme Famille
                     </a>
                     <a
                       href="/api/download?file=programme-classique"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-b-md"
+                      className="block px-4 py-2 text-sm font-medium text-brand-dark-blue hover:bg-gray-200 transition-colors rounded-b-md"
                       onClick={() => setShowProgramMenu(false)}
                       role="menuitem"
+                      download
                     >
                       Programme Classique
                     </a>
