@@ -1,9 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 // Hooks
 import { useRouter } from "next/router";
+
+// Components
+import InstallPWA from "./InstallPWA";
 
 // Icons
 import { Play, Menu, Close, Download } from "./Icons";
@@ -14,12 +16,16 @@ const links = [
     label: "Programmation",
   },
   {
+    href: "/search",
+    label: "Le cinéma",
+  },
+  {
     href: "/about",
     label: "Nos Bénévoles",
   },
   {
-    href: "/search",
-    label: "Le cinéma",
+    href: "/contact",
+    label: "Contact",
   },
 ];
 
@@ -42,7 +48,7 @@ export const Navbar: React.FC = () => {
             className="flex items-center py-5 space-x-2 md:py-0 text-brand-dark-blue"
           >
             <div>
-              <Play className="w-8 h-8" />
+              <Play className="w-12 h-12" />
             </div>
 
             <span className="text-4xl md:text-5xl font-medium" style={{ fontFamily: 'Monoton, cursive' }}>Le Silverado</span>
@@ -62,6 +68,11 @@ export const Navbar: React.FC = () => {
               </Link>
             ))}
           </ul>
+        </div>
+
+        {/* Desktop Actions */}
+        <div className="hidden md:flex items-center gap-3">
+          <InstallPWA />
         </div>
 
         {/* Mobile Menu Button */}
@@ -97,13 +108,19 @@ export const Navbar: React.FC = () => {
                 </Link>
               </li>
             ))}
+            {/* Install PWA Button */}
+            <li className="border-t border-gray-200">
+              <div className="p-4">
+                <InstallPWA />
+              </div>
+            </li>
             {/* Download Links */}
             <li className="border-t border-gray-200">
               <a
-                href="/cinema/programme-famille.pdf"
-                download="Programme-Famille.pdf"
+                href="/api/download?file=programme-famille"
                 className="flex items-center gap-2 p-4 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200"
                 onClick={() => setIsMobileMenuOpen(false)}
+                download
               >
                 <Download className="w-5 h-5" />
                 Programme Famille
@@ -111,10 +128,10 @@ export const Navbar: React.FC = () => {
             </li>
             <li>
               <a
-                href="/cinema/programme-classique.pdf"
-                download="Programme-Classique.pdf"
+                href="/api/download?file=programme-classique"
                 className="flex items-center gap-2 p-4 font-medium text-brand-dark-blue transition-colors hover:bg-gray-200"
                 onClick={() => setIsMobileMenuOpen(false)}
+                download
               >
                 <Download className="w-5 h-5" />
                 Programme Classique

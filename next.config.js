@@ -2,11 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   output: "standalone",
-  basePath: "/cinema",
-  assetPrefix: "/cinema",
+  basePath: "",
+  assetPrefix: "",
   images: {
     unoptimized: true,
-    domains: ["grumly.ddns.net", "image.tmdb.org", "github.com", "secure.gravatar.com"],
+    domains: ["cinemarthon.fr", "image.tmdb.org", "github.com", "secure.gravatar.com"],
   },
 };
 

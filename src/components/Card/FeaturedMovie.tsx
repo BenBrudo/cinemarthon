@@ -26,7 +26,7 @@ export const FeaturedMoviedCard: React.FC<{ movie: MovieWithScreening }> = ({
         <div className="absolute inset-x-0 bottom-0 px-6 py-4 text-white bg-gradient-to-t from-black via-black to-transparent">
           <div className="flex flex-col gap-4">
             <div className="text-2xl font-extrabold leading-tight line-clamp-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              {movie.title}
+              {movie.titre || movie.title}
             </div>
 
             <div className="flex flex-col gap-4 md:flex-row md:items-end">

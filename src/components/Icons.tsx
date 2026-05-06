@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const Search: React.FC<{ className: string }> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -32,15 +34,7 @@ export const Search: React.FC<{ className: string }> = ({ className }) => (
 );
 
 export const Play: React.FC<{ className: string }> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
-    fill="currentColor"
-    viewBox="0 0 256 256"
-  >
-    <rect width="256" height="256" fill="none"></rect>
-    <path d="M232.3,114.3,88.3,26.4a15.5,15.5,0,0,0-16.1-.3A15.8,15.8,0,0,0,64,40V216a15.8,15.8,0,0,0,8.2,13.9,15.5,15.5,0,0,0,16.1-.3l144-87.9a16,16,0,0,0,0-27.4Z"></path>
-  </svg>
+  <Image src="/icon.png" alt="Le Silverado" width={256} height={256} className={className} />
 );
 
 export const Close: React.FC<{ className: string }> = ({ className }) => (

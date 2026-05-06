@@ -1,142 +1,292 @@
 {
   "movies": [
     {
-      "id": "1258509-stin-sem-eftir-er",
-      "screening_date": "2026-01-09",
+      "id": "803208",
+      "screening_date": "2026-04-03",
       "hours": "20:30",
-      "title": "L'Amour qu'il nous reste"
+      "titre": "Orphelin"
     },
     {
-      "id": "1211442-rebuilding",
-      "screening_date": "2026-01-10",
+      "id": "1364608",
+      "screening_date": "2026-04-04",
       "hours": "17:30",
-      "title": "Rebuilding"
+      "titre": "Anemone"
     },
     {
-      "id": "1266826-la-petite-cuisine-de-mehdi",
-      "screening_date": "2026-01-10",
+      "id": "1471224-le-crime-du-3e-etage",
+      "screening_date": "2026-04-04",
       "hours": "20:30",
-      "title": "La petite cuisine de Mehdi"
+      "titre": "Le crime du 3ème étage"
     },
     {
-      "id": "1309373-le-chant-des-forets",
-      "screening_date": "2026-01-11",
+      "id": "1219620",
+      "screening_date": "2026-04-05",
       "hours": "17:30",
-      "title": "Le chant des forêts"
+      "titre": "Ce qu'il reste de nous"
     },
     {
-      "id": "1220564-o-agente-secreto",
-      "screening_date": "2026-01-13",
+      "id": "1308745",
+      "screening_date": "2026-04-07",
       "hours": "20:30",
-      "title": "L'agent secret"
+      "titre": "La traque de Meral"
     },
     {
-      "id": "1069650-l-engloutie",
-      "screening_date": "2026-01-16",
-      "hours": "20:30",
-      "title": "L'engloutie"
-    },
-    {
-      "id": "1368166-the-housemaid",
-      "screening_date": "2026-01-17",
-      "hours": "17:30",
-      "title": "La femme de ménage"
-    },
-    {
-      "id": "1269644-amrum",
-      "screening_date": "2026-01-17",
-      "hours": "20:30",
-      "title": "Une enfance allemande"
-    },
-    {
-      "id": "991494-the-spongebob-movie-search-for-squarepants",
-      "screening_date": "2026-01-18",
+      "id": "1002109",
+      "screening_date": "2026-04-08",
       "hours": "15:00",
-      "title": "Bob l'éponge le film"
+      "titre": "Police Flash 80"
     },
     {
-      "id": "1421153",
-      "screening_date": "2026-01-18",
+      "id": "1374102",
+      "screening_date": "2026-04-10",
+      "hours": "20:30",
+      "titre": "La fin de l'âge de fer"
+    },
+    {
+      "id": "1432605",
+      "screening_date": "2026-04-11",
       "hours": "17:30",
-      "title": "Le temps des moissons"
+      "titre": "Un jour avec mon père"
     },
     {
-      "id": "1379266",
-      "screening_date": "2026-01-20",
+      "id": "1421963",
+      "screening_date": "2026-04-11",
       "hours": "20:30",
-      "title": "Le maître du kabuki"
+      "titre": "Ceux qui comptent"
     },
     {
-      "id": "1308618-qui-brille-au-combat",
-      "screening_date": "2026-01-23",
-      "hours": "20:30",
-      "title": "Qui brille au combat"
-    },
-    {
-      "id": "1371185-song-sung-blue",
-      "screening_date": "2026-01-24",
-      "hours": "17:30",
-      "title": "Sur un air de blues"
-    },
-    {
-      "id": "1383289-laurent-dans-le-vent",
-      "screening_date": "2026-01-24",
-      "hours": "20:30",
-      "title": "Laurent dans le vent"
-    },
-    {
-      "id": "975335-magalhaes",
-      "screening_date": "2026-01-25",
-      "hours": "17:30",
-      "title": "Magellan"
-    },
-    {
-      "id": "1001288-vade-retro",
-      "screening_date": "2026-01-27",
-      "hours": "20:30",
-      "title": "Vade Retro"
-    },
-    {
-      "id": "1235277-la-pire-mere-au-monde",
-      "screening_date": "2026-01-28",
-      "hours": "15:00",
-      "title": "La pire mère au monde"
-    },
-    {
-      "id": "1290436",
-      "screening_date": "2026-01-30",
-      "hours": "20:30",
-      "title": "Ma Frère"
-    },
-    {
-      "id": "1159206-father-mother-sister-brother",
-      "screening_date": "2026-01-31",
-      "hours": "17:30",
-      "title": "Father Mother Sister Brother"
-    },
-    {
-      "id": "1290450-love-me-tender",
-      "screening_date": "2026-01-31",
-      "hours": "20:30",
-      "title": "Love Me Tender"
-    },
-    {
-      "id": "1585049-premieres-neiges",
-      "screening_date": "2026-02-01",
+      "id": "641364",
+      "screening_date": "2026-04-12",
       "hours": "16:00",
-      "title": "Premières neiges"
+      "titre": "L'odyssée de Choum"
     },
     {
-      "id": "1221061-in-die-sonne-schauen",
-      "screening_date": "2026-02-01",
+      "id": "1318335",
+      "screening_date": "2026-04-12",
       "hours": "17:30",
-      "title": "Les échos du passé"
+      "titre": "Les rayons et les ombres"
     },
     {
-      "id": "1567472-tout-va-bien",
-      "screening_date": "2026-02-03",
+      "id": "1018962",
+      "screening_date": "2026-04-14",
       "hours": "20:30",
-      "title": "Tout va bien"
+      "titre": "La couleuvre noire"
+    },
+    {
+      "id": "1578755",
+      "screening_date": "2026-04-17",
+      "hours": "20:30",
+      "titre": "Droits dans leurs bottes"
+    },
+    {
+      "id": "687163",
+      "screening_date": "2026-04-18",
+      "hours": "17:30",
+      "titre": "Projet Dernière Chance (Project Hail Mary)"
+    },
+    {
+      "id": "1126694",
+      "screening_date": "2026-04-18",
+      "hours": "20:30",
+      "titre": "Les filles du ciel"
+    },
+    {
+      "id": "1433087",
+      "screening_date": "2026-04-19",
+      "hours": "17:30",
+      "titre": "Love on trial"
+    },
+    {
+      "id": "1227739",
+      "screening_date": "2026-04-21",
+      "hours": "20:30",
+      "titre": "Une jeunesse indienne (Homebound)"
+    },
+    {
+      "id": "1454680",
+      "screening_date": "2026-04-22",
+      "hours": "15:00",
+      "titre": "Victor comme tout le monde"
+    },
+    {
+      "id": "1376412",
+      "screening_date": "2026-04-24",
+      "hours": "20:30",
+      "titre": "La guerre des prix"
+    },
+    {
+      "id": "1317149",
+      "screening_date": "2026-04-25",
+      "hours": "17:30",
+      "titre": "Plus fort que moi (I Swear)"
+    },
+    {
+      "id": "1020829",
+      "screening_date": "2026-04-25",
+      "hours": "20:30",
+      "titre": "La danse des renards"
+    },
+    {
+      "id": "999140",
+      "screening_date": "2026-04-26",
+      "hours": "15:00",
+      "titre": "Planètes"
+    },
+    {
+      "id": "1315657",
+      "screening_date": "2026-04-26",
+      "hours": "17:30",
+      "titre": "Yellow Letters"
+    },
+    {
+      "id": "661603",
+      "screening_date": "2026-04-28",
+      "hours": "20:30",
+      "titre": "Nuestra Tierra"
+    },
+    {
+      "id": "1182861",
+      "screening_date": "2026-05-01",
+      "hours": "20:30",
+      "title": "Romeria"
+    },
+    {
+      "id": "1532470",
+      "screening_date": "2026-05-02",
+      "hours": "17:30",
+      "title": "Pour Klara"
+    },
+    {
+      "id": "1000990-la-femme-de",
+      "screening_date": "2026-05-02",
+      "hours": "20:30",
+      "title": "La femme de"
+    },
+    {
+      "id": "1254800",
+      "screening_date": "2026-05-03",
+      "hours": "17:30",
+      "title": "Le cri des gardes"
+    },
+    {
+      "id": "1565268",
+      "screening_date": "2026-05-05",
+      "hours": "20:30",
+      "title": "L'affaire Abdallah"
+    },
+    {
+      "id": "1404604",
+      "screening_date": "2026-05-06",
+      "hours": "15:00",
+      "title": "Compostelle"
+    },
+    {
+      "id": "1263012",
+      "screening_date": "2026-05-08",
+      "hours": "20:30",
+      "title": "La corde au cou (Dead Man's Wire)"
+    },
+    {
+      "id": "1000085",
+      "screening_date": "2026-05-09",
+      "hours": "17:30",
+      "title": "Morlaix"
+    },
+    {
+      "id": "1404684",
+      "screening_date": "2026-05-09",
+      "hours": "20:30",
+      "title": "Juste une illusion"
+    },
+    {
+      "id": "1202205-l-hiver-d-edmond-et-lucy",
+      "screening_date": "2026-05-10",
+      "hours": "16:00",
+      "title": "Edmond et Lucy la forêt, c'est l'aventure"
+    },
+    {
+      "id": "710277",
+      "screening_date": "2026-05-10",
+      "hours": "17:30",
+      "title": "Hayat"
+    },
+    {
+      "id": "1072742",
+      "screening_date": "2026-05-12",
+      "hours": "20:30",
+      "title": "La fille du konbini"
+    },
+    {
+      "id": "1108393",
+      "screening_date": "2026-05-15",
+      "hours": "20:30",
+      "title": "Allo la France"
+    },
+    {
+      "id": "1376457",
+      "screening_date": "2026-05-16",
+      "hours": "17:30",
+      "title": "Soumsoum, la nuit des astres"
+    },
+    {
+      "id": "1119547",
+      "screening_date": "2026-05-16",
+      "hours": "20:30",
+      "title": "A voix basse"
+    },
+    {
+      "id": "1517120",
+      "screening_date": "2026-05-17",
+      "hours": "17:30",
+      "title": "Les fleurs du manguier"
+    },
+    {
+      "id": "1661857",
+      "screening_date": "2026-05-19",
+      "hours": "20:30",
+      "title": "Alice au pays des colons"
+    },
+    {
+      "id": "1501523",
+      "screening_date": "2026-05-20",
+      "hours": "15:00",
+      "title": "L'arnaqueuse"
+    },
+    {
+      "id": "1660552",
+      "screening_date": "2026-05-22",
+      "hours": "20:30",
+      "title": "The Mad Dog of Europe"
+    },
+    {
+      "id": "1365683-primavera",
+      "screening_date": "2026-05-23",
+      "hours": "17:30",
+      "title": "Vivaldi et moi"
+    },
+    {
+      "id": "1303613",
+      "screening_date": "2026-05-23",
+      "hours": "20:30",
+      "title": "Sorda"
+    },
+    {
+      "id": "587370",
+      "screening_date": "2026-05-24",
+      "hours": "15:00",
+      "title": "Les contes du pommier"
+    },
+    {
+      "id": "1135582-dao",
+      "screening_date": "2026-05-24",
+      "hours": "17:30",
+      "title": "Dao"
+    },
+    {
+      "id": "1149764",
+      "screening_date": "2026-05-26",
+      "hours": "20:30",
+      "title": "Sukkwan Island"
     }
   ]
 }
