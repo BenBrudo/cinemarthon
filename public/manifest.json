@@ -1,0 +1,39 @@
+{
+  "name": "Le Silverado - Cinéma Art et Essai",
+  "short_name": "Silverado",
+  "description": "Le Silverado : cinéma art et essai proposant le Cinémarthon, des films pour jeune public et programmation École et Cinéma. Découvrez notre sélection de films de qualité.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1D556F",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["entertainment", "lifestyle"],
+  "lang": "fr-FR",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
